@@ -7,3 +7,6 @@ print("안녕하세요 - 조수진이에욤")
 print('asdf')
 
 print('asdfasdfasfd')
+
+
+print('visual studio로 연결')
