@@ -1,0 +1,13 @@
+.diary_list .card-header {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  top: -2px;
+  background-color: var(--grey-color);
+  border-top-left-radius: 28px;
+  border-top-right-radius: 28px;
+}
+
+.diary_list > .card {
+  margin: 45px 30px;
+}

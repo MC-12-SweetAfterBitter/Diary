@@ -1,0 +1,19 @@
+/* Components */
+@import url("mainpage/navbar.css");
+@import url("mainpage/main_photo.css");
+@import url("mainpage/main_contents.css");
+@import url("mainpage/personal_main.css");
+@import url("mainpage/diary_list.css");
+
+/* variable & font */
+@import url("variable.css");
+@import url("https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap");
+
+/* font */
+* {
+  font-family: "Gowun Dodum", sans-serif;
+}
+
+body {
+  background-color: var(--beige-color);
+}

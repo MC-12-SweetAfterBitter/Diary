@@ -1,0 +1,33 @@
+.main_contents {
+  position: relative;
+  top: -450px;
+  right: -800px;
+  width: 500px;
+}
+
+.main_contents img {
+  width: 500px;
+  height: 301.5px;
+  border-radius: 20px;
+  box-shadow: 10px 5px 5px var(--grey-color);
+}
+
+.main_sentences {
+  width: 500px;
+  position: relative;
+  top: -690px;
+  right: -250px;
+}
+
+.main_sentences span {
+  display: block;
+}
+
+.main_sentences span:first-child,
+.main_sentences span:nth-child(2) {
+  font-size: 30px;
+}
+
+.main_sentences span:nth-child(3) {
+  margin-top: 20px;
+}
