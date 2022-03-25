@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style/login.css" />
+    <title>Login</title>
+  </head>
+
+  <body>
+    <div class="main_navbar">
+      <!-- navbar -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand nav-brand22" href="main.html"
+          >My Online Diary</a
+          >
+          <button
+                  class="navbar-toggler"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#navbarNav"
+                  aria-controls="navbarNav"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </nav>
+    </div>
+
+    <!-- login form -->
+    <div class="login-from-body">
+      <section class="login-from">
+        <h1>공감 다이어리 로고</h1>
+        <form action="">
+          <div class="int-area">
+            <input type="text" name="id" id="id"
+                   autocomplete="off" required>
+            <label for="id">USER NAME</label>
+          </div>
+          <div class="int-area">
+            <input type="password" name="pw" id="pw"
+                   autocomplete="off" required>
+            <label for="pw">PASSWORD</label>
+          </div>
+          <div class="btn-area">
+            <button id="btn" type="submit" onclick="postId">LOGIN</button>
+          </div>
+        </form>
+        <div class="caption">
+          <a href="">Sign Up</a>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
