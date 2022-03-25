@@ -1,16 +1,13 @@
 * {
     font-family: 'Jua', sans-serif;
-    list-style: none;
-    text-decoration: none;
     border-collapse: collapse;
     margin: 0px;
     padding: 0px;
-    color:gray;
+    color: gray;
 }
 
-
 .intro_bg {
-    width: 1920px;
+    width: 100%;
     height: 289px;
     background-color: #CBD5D4;
     background-size: cover;
@@ -18,22 +15,38 @@
 
 .nav {
     display: flex;
-    justify-content: flex-start;
-    line-height: 24px;
-    height: 24px;
-    width:calc(1529px - 300px);
-    background-color: aqua;
-}
-.nav > li {
-    margin-left: 42px;
-}
-.nav-login {
-    display: flex;
     justify-content: flex-end;
     line-height: 24px;
     height: 24px;
-    background-color: blueviolet;
+}
+
+/*글자 간격*/
+.nav > li {
+    margin-left: 42px;
+    color: gray; !important
+}
+
+.searchArea {
+    display: flex;
+    width: 300px;
+    height: 37px;
+    background-color: white;
+    border-radius: 50px;
+    margin-top: 0px;
     color: #CBD5D4;
+}
+
+.searchArea > form > input {
+    border: none;
+    width: 250px;
+    height: 40px;
+    background-color: white;
+}
+
+.searchArea > form > span {
+    width: 50px;
+    color: gray;
+    cursor: pointer;
 }
 
 .nav-login > li {
@@ -45,7 +58,7 @@
     font-size: 20px;
 }
 
-.item-desc {
+.memo-title {
     width: 500px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -64,4 +77,31 @@
 
 .wrap {
     width: 100%;
+}
+
+.input-group-text {
+    width: 248px;
+    padding: 10px;
+    border: none;
+}
+
+.custom-select {
+    width: 248px;
+    padding: 10px;
+    border: none;
+}
+
+.form-control2 {
+    width: 248px;
+    padding: 100px;
+    border: none;
+}
+
+.btn-write {
+    background-color: #CBD5D4;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    width: 90px;
+
 }

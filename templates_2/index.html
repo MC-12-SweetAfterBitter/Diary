@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 
 <head>
     <!-- Required meta tags -->
@@ -26,32 +26,18 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
     <style type="text/css">
+
         body {
             background-color: #F7EEDF;
         }
     </style>
 
-    <title>공감 다이어리ㄴ여습 </title>
+    <title>공감 다이어리</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 
 
     <script>
-        $(document).ready(function () {
-            get_rate();
-        });
-
-        function get_rate() {
-            $.ajax({
-                type: "GET",
-                url: "http://spartacodingclub.shop/sparta_api/rate",
-                data: {},
-                success: function (response) {
-                    let now_rate = response['rate'];
-                    $('#now-rate').text(now_rate);
-                }
-            })
-        }
 
         function order() {
             alert('일기가 작성되었습니다!');
@@ -63,24 +49,26 @@
 <div class="wrap">
     <div class="intro_bg">
         <div class="header">
-            <div class="nav">
+            <div class="searchArea">
+                <form>
+                    <input type="search" placeholder="Search">
+                    <span>검색</span>
+                </form>
+
+            </div>
+            <ul class="nav">
                 <li><a href="#">나만의 일기장</a></li>
                 <li><a href="#">공감 일기장</a></li>
-                <div class="searchArea">
-                    <input type="search" placeholder="Search">
-                </div>
-            </div>
-
-            <div class="nav-login">
                 <li><a href="#">로그인</a></li>
                 <li><a href="#">회원가입</a></li>
-            </div>
+            </ul>
         </div>
-
-
     </div>
+
+
 </div>
-<div class="item-desc">
+</div>
+<div class="memo-title">
     <h1>오늘의 일기</h1>
     <p>오늘의 일기를 적어봅시다.</p>
 </div>
@@ -93,10 +81,10 @@
     </div>
     <div class="input-group mb-3">
         <div class="input-group-prepend">
-            <label class="input-group-text" for="inputGroupSelect01">수량</label>
+            <label class="input-group-text" for="inputGroupSelect01">날씨</label>
         </div>
         <select class="custom-select" id="inputGroupSelect01">
-            <option selected>오늘의 날씨</option>
+            <option selected>오늘의 날씨는 어땠나요?</option>
             <option value="1">맑음</option>
             <option value="2">흐림</option>
             <option value="3">비</option>
@@ -106,9 +94,9 @@
         <div class="input-group-prepend">
             <span class="input-group-text">오늘의 일기 내용</span>
         </div>
-        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        <input type="text" class="form-control2" aria-label="Default" aria-describedby="inputGroup-sizing-default">
     </div>
-    <button type="button" onclick="order()" class="btn btn-primary btn-order">작성하기</button>
+    <button type="button" onclick="order()" class="btn-write">작성하기</button>
 </div>
 </body>
 
