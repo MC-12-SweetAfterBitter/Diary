@@ -1,9 +1,15 @@
-/* Components */
-@import url("mainpage/navbar.css");
-@import url("mainpage/main_photo.css");
-@import url("mainpage/main_contents.css");
-@import url("mainpage/personal_main.css");
-@import url("mainpage/diary_list.css");
+/* main page */
+@import url("main_page/navbar.css");
+@import url("main_page/main_photo.css");
+@import url("main_page/main_contents.css");
+
+/* Personal page */
+@import url("personal_page/personal_main.css");
+@import url("personal_page/diary_list.css");
+@import url("personal_page/write_button.css");
+
+/* write page */
+@import url("write_page/writing_place.css");
 
 /* variable & font */
 @import url("variable.css");
