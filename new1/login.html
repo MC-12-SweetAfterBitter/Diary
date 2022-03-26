@@ -41,21 +41,30 @@
       <!-- navbar -->
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand nav-brand22" href="main.html"
-          >My Online Diary</a
-          >
+          <a class="navbar-brand nav-brand22" href="main.html">My Online Diary</a>
           <button
-                  class="navbar-toggler"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#navbarNav"
-                  aria-controls="navbarNav"
-                  aria-expanded="false"
-                  aria-label="Toggle navigation"
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
           >
             <span class="navbar-toggler-icon"></span>
           </button>
-        </nav>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="personal_main.html">개인 일기장</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">공유 커뮤니티</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </div>
 
     <!-- login form -->
@@ -63,24 +72,50 @@
       <section class="login-from">
         <h1>공감 다이어리 로고</h1>
         <form action="">
+          <!-- 이메일 -->
           <div class="int-area">
-            <input type="text" name="id" id="id"
+            <input type="text" name="em" id="em"
                    autocomplete="off" required>
-            <label for="id">USER NAME</label>
+            <label for="em">USER EMAIL</label>
           </div>
+          <!-- 패스워드 -->
           <div class="int-area">
             <input type="password" name="pw" id="pw"
                    autocomplete="off" required>
             <label for="pw">PASSWORD</label>
           </div>
+          <!-- 로그인 버튼 -->
           <div class="btn-area">
             <button id="btn" type="submit" onclick="postId">LOGIN</button>
           </div>
         </form>
+        <!-- 회원가입 페이지 이동 -->
         <div class="caption">
-          <a href="">Sign Up</a>
+          <a href="signup.html">Sign Up</a>
         </div>
       </section>
     </div>
+
+  <script>
+        let em = $('#em');
+        let pw = $('#pw');
+        let btn = $('#btn');
+
+        $(btn).on('click', function() {
+            if ($(em).val() == "") {
+                $(em).next('label').addClass('warning');
+                setTimeout(function () {
+                    $('label').removeClass('warning')
+                },1500);
+            }
+            else if ($(pw).val() == "") {
+                $(pw).next('label').addClass('warning');
+                setTimeout(function () {
+                    $('label').removeClass('warning')
+                },1500);
+            }
+        });
+    </script>
+
   </body>
 </html>
