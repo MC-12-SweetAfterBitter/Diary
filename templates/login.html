@@ -32,22 +32,22 @@
 
     <script>
 
-        function postId() {
-                let id = $('#id').val()
-                let pw = $('#pw').val()
-                $.ajax({
-                    type: "POST",
-                    url: "/login/res",
-                    data: {name_give:id, password_give:pw},
-                    success: function (response) { // 성공하면
-                        if(response['ans']=='success'){
-                            alert(response["msg"]);
-                            window.location.href="http://192.168.35.168:5500/main"
-                            // location.replace("index.html")
-                        }
-                    }
-                })
-            }
+        // function postId() {
+        //         let id = $('#id').val()
+        //         let pw = $('#pw').val()
+        //         $.ajax({
+        //             type: "POST",
+        //             url: "/login",
+        //             data: {name_give:id, password_give:pw},
+        //             success: function (response) { // 성공하면
+        //                 if(response['ans']=='success'){
+        //                     alert(response["msg"]);
+        //                     window.location.href="http://192.168.35.168:5500/main"
+        //                     // location.replace("index.html")
+        //                 }
+        //             }
+        //         })
+        //     }
 
 
     </script>
@@ -56,19 +56,19 @@
 <body>
     <section class="login-from">
         <h1>공감 다이어리 로고</h1>
-        <form action="">
+        <form action="/login" method="post">
             <div class="int-area">
-                <input type="text" name="id" id="id"
+                <input type="text" name="name_give" id="id"
                        autocomplete="off" required>
                 <label for="id">USER NAME</label>
             </div>
             <div class="int-area">
-                <input type="password" name="pw" id="pw"
+                <input type="password" name="password_give" id="pw"
                        autocomplete="off" required>
                 <label for="pw">PASSWORD</label>
             </div>
             <div class="btn-area">
-                <button id="btn" type="submit" onclick="postId">LOGIN</button>
+                <button id="btn" type="submit">LOGIN</button>
             </div>
         </form>
         <div class="caption">

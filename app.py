@@ -8,7 +8,7 @@ client = MongoClient('localhost', 27017)
 db = client.dbhomework
 
 app.secret_key = 'secretkey'  # secret_key는 서버상에 동작하는 어플리케이션 구분하기 위해 사용하고 복잡하게 만들어야 합니다.
-app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(minutes=1) # 로그인 지속시간을 정합니다. 현재 1분
+app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(seconds=5) # 로그인 지속시간을 정합니다. 현재 1분
 
 
 # 회원가입 화면
@@ -16,11 +16,13 @@ app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(minutes=1) # 로그인 지�
 def register_page():
     return render_template('register.html')
 # 로그인 화면
-@app.route('/login')
+@app.route('/login_page')
 def login_page():
     if "name" in session:
-        return jsonify({"ans":"success"},{"msg" : "환영합니다 {}님".format(escape(session['name']))})
-    return render_template('login.html')
+        # return jsonify({"ans":"success"},{"msg" : "환영합니다 {}님".format(escape(session['name']))})
+        return "환영합니다 {}님".format(escape(session['name']))
+    else:
+        return render_template('login.html')
 
 
 # 회원가입(POST) API
@@ -58,20 +60,27 @@ def resgister():
 
 
 # 로그인(POST) API
-@app.route('/login/res', methods=['POST',"GET"])
+@app.route('/login', methods=['POST', "GET"])
 def login():
-    name_receive = request.form['name_give']
-    password_receive = request.form['password_give']
-    print(name_receive, password_receive)
-    res = db.diary.find({}, {'_id': False})
-    return jsonify({'ans': 'success', 'msg': '회원가입 완료'})
-    # for list in res:
-    #     # DB의 id와 비밀번호 확인
-    #     if list['name'] == name_receive and list['password'] == password_receive:
-    #         #세션 할당 후
-    #         session['name'] = request.form['name_give']
-    #         #
-    #         return render_template(url_for(login_page))
+    if request.method == 'POST':
+        name_receive = request.form['name_give']
+        password_receive = request.form['password_give']
+        # print(name_receive, password_receive)
+        res = db.diary.find({}, {'_id': False})
+        # print(res[1]['name'])
+        # for i in res:
+        #     print(i['name'], i['password'])
+        for i in res:
+            if i['name'] == name_receive and i['password'] == password_receive:
+                # 세션 할당 후
+                session['name'] = request.form['name_give']
+                # print("세션 Id : " + session['name'])
+                return redirect(url_for('login_page'))
+
+
+    else:
+        return redirect(url_for('login_page'))
+
     # return render_template(url_for(login_page))
 
 
