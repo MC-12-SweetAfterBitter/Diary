@@ -37,15 +37,15 @@ def resgister():
 
     for list in res:
         # 공백 처리, 해당 부분에서 약간의 오류를 발생시키면 html 스크립트 공백체크가 작동한다..
-        if list['nae'] == " " or list['emil'] == " " or list['pasword'] == " " or list['pcf'] == " ":
-            print(list['name'], list['email'], list['pssword'], list['pwcf'])
-            return jsonify({'ans': 'fail', 'msg': '입력되지 않은 값이 있습니다'})
+        if name_receive == '' or email_receive == '' or password_receive == '' or  pwcf_receive == '':
+            return jsonify({'ans': 'fail', 'msg': '공백이 있습니다'})
         # 회원가입 시 중복 ID, Email 처리
         elif list['name'] == name_receive or list['email'] == email_receive:
             return jsonify({'ans': 'fail', 'msg': '아이디 또는 이메일 중복!'})
         # 2차 비밀번호 체크
         elif pwcf_receive != password_receive:
             return jsonify({'ans': 'fail', 'msg': '비밀번호가 다릅니다'})
+
 
     doc = {
         'name':name_receive,
@@ -64,15 +64,15 @@ def login():
     password_receive = request.form['password_give']
     print(name_receive, password_receive)
     res = db.diary.find({}, {'_id': False})
-
-    for list in res:
-        # DB의 id와 비밀번호 확인
-        if list['name'] == name_receive and list['password'] == password_receive:
-            #세션 할당 후
-            session['name'] = request.form['name_give']
-            #
-            return render_template(url_for(login_page))
-    return render_template(url_for(login_page))
+    return jsonify({'ans': 'success', 'msg': '회원가입 완료'})
+    # for list in res:
+    #     # DB의 id와 비밀번호 확인
+    #     if list['name'] == name_receive and list['password'] == password_receive:
+    #         #세션 할당 후
+    #         session['name'] = request.form['name_give']
+    #         #
+    #         return render_template(url_for(login_page))
+    # return render_template(url_for(login_page))
 
 
 
