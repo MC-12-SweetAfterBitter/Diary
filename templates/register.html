@@ -7,12 +7,53 @@
     <link rel="stylesheet" href="../static/css/style.css">
 
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <!--미입력 시 경고창-->
+    <script>
+
+        let id = $('#id');
+        let em = $('#em');
+        let pw = $('#pw');
+        let pwcf = $('#pwcf');
+        let btn = $('#btn');
+
+        $(btn).on('click', function () {
+            if ($(id).val() == "") {
+                $(id).next('label').addClass('warning');
+                setTimeout(function () {
+                    $('label').removeClass('warning')
+                }, 1500);
+            } else if ($(em).val() == "") {
+                $(em).next('label').addClass('warning');
+                setTimeout(function () {
+                    $('label').removeClass('warning')
+                }, 1500);
+            } else if ($(pw).val() == "") {
+                $(pw).next('label').addClass('warning');
+                setTimeout(function () {
+                    $('label').removeClass('warning')
+                }, 1500);
+            } else if ($(pwcf).val() == "") {
+                $(pwcf).next('label').addClass('warning');
+                setTimeout(function () {
+                    $('label').removeClass('warning')
+                }, 1500);
+            }
+        });
+
+    </script>
+
+
+
+
 
     <script>
 
         $(document).ready(function () {
             // show_orders();
+
         });
+
+
 
         function order() {
                 //html중 입력 받는 input의 id value 각 각을 변수로 만듬
@@ -26,79 +67,43 @@
                     data: {name_give:id, email_give:em,password_give:pw,
                     pwcf_give:pwcf},
                     success: function (response) { // 성공하면
+
                         if(response['ans']=='success'){
                             alert(response["msg"]);
                             window.location.reload()
                             // location.replace("index.html")
                         }else{
                             alert(response["msg"]);
-                            window.location.reload()
+                            // window.location.reload()
                         }
                     }
                 })
             }
 
             //원하는 db데이터만 가져와지는지 확인
-            function show_orders() {
-                $.ajax({
-                    type: "GET",
-                    url: "/order",
-                    data: {},
-                    success: function (response) {
-                        let test1 = response['all_orders']
-                        for (let i =0; i<test1.length; i++){
-                            let name = test1[i]['name']
-                            let em = test1[i]['email']
-                            //th는 테이블에서 헤더역할
-
-                            let tmp_html = `<tr>
-                                                <th scope="row">${name}</th>
-                                                <td>${em}</td>
-                                            </tr>`
-                            $('#orders').append(tmp_html)
-
-
-
-                        }
-                    }
-                })
-            }
+            // function show_orders() {
+            //     $.ajax({
+            //         type: "GET",
+            //         url: "/order",
+            //         data: {},
+            //         success: function (response) {
+            //             let test1 = response['all_orders']
+            //             for (let i =0; i<test1.length; i++){
+            //                 let name = test1[i]['name']
+            //                 let em = test1[i]['email']
+            //                 //th는 테이블에서 헤더역할
+            //
+            //                 let tmp_html = `<tr>
+            //                                     <th scope="row">${name}</th>
+            //                                     <td>${em}</td>
+            //                                 </tr>`
+            //                 $('#orders').append(tmp_html)
+            //             }
+            //         }
+            //     })
+            // }
     </script>
-    <!--미입력 시 경고창-->
-  <script>
-        let id = $('#id');
-        let em = $('#em');
-        let pw = $('#pw');
-        let pwcf = $('#pwcf');
-        let btn = $('#btn');
 
-        $(btn).on('click', function() {
-            if ($(id).val() == "") {
-                $(id).next('label').addClass('warning');
-                setTimeout(function () {
-                    $('label').removeClass('warning')
-                },1500);
-            }
-            else if ($(em).val() == "") {
-                $(em).next('label').addClass('warning');
-                setTimeout(function () {
-                    $('label').removeClass('warning')
-                },1500);
-            }
-            else if ($(pw).val() == "") {
-                $(pw).next('label').addClass('warning');
-                setTimeout(function () {
-                    $('label').removeClass('warning')
-                },1500);
-            }
-            else if ($(pwcf).val() == "") {
-                $(pwcf).next('label').addClass('warning');
-                setTimeout(function () {
-                    $('label').removeClass('warning')
-                },1500);
-            }
-        });
-    </script>
 
 </head>
 <!---->
