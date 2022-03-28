@@ -1,5 +1,6 @@
 .main_photo {
+  position: absolute;
   background-image: url("002.png");
-  height: 608px;
+  height: 100%;
   width: 100%;
 }

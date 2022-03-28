@@ -1,8 +1,14 @@
+.middle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .main_contents {
   position: relative;
-  top: -450px;
-  right: -800px;
-  width: 500px;
+  padding: 10% 0px 0px 0px;
+  /*right: -800px;*/
+  /*width: 500px;*/
 }
 
 .main_contents img {
@@ -13,10 +19,11 @@
 }
 
 .main_sentences {
-  width: 500px;
   position: relative;
-  top: -690px;
-  right: -250px;
+  width: 500px;
+  padding: 10% 0px 0px 0px;
+  /*top: -690px;*/
+  /*right: -250px;*/
 }
 
 .main_sentences span {
