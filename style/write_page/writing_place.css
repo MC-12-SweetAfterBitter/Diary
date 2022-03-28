@@ -1,5 +1,6 @@
 .writing_place {
-  padding: 35px 30px;
+  padding: 0px 30px;
+  display: none;
 }
 
 .total_date {
@@ -31,4 +32,8 @@
   height: 35px;
   margin: 10px;
   font-size: 15px;
+}
+
+.active {
+  display: block;
 }

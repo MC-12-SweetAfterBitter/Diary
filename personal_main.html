@@ -33,6 +33,30 @@
     <!-- CSS -->
     <link rel="stylesheet" href="style/main.css" />
     <title>My Online Diary > 개인 일기장</title>
+    <script>
+      const uploadButton = document.querySelector(".upload_button"); // 업로드 버튼 가져오기
+      const diaryTitle = document.querySelector(".title input"); // 일기장 제목
+
+      function uploadDiary() {
+        let title = diaryTitle.value;
+
+        let temp_html = `<div class="card">
+                          <div class="card-header">
+                            <h5>${title}</h5>
+                            <h5>2022-03-25</h5>
+                          </div>
+                          <div class="card-body">
+                            <p class="card-text">
+                              오늘은 ~~ 했다. ~ 를 먹었고, ~와 함께 ~에 놀러갔다! 재밌었다.
+                            </p>
+                          </div>
+                        </div>`;
+
+        $(".diary_lists").append(temp_html);
+      }
+
+      uploadButton.addEventListener("click", uploadDiary);
+    </script>
   </head>
 
   <body>
@@ -100,37 +124,171 @@
         <div class="personal_diary_explaination">개인 다이어리에 대한 설명</div>
       </div>
 
-      <!-- 다이어리 리스트 -->
       <div class="diary_list">
-        <div class="card">
-          <div class="card-header">
-            <h5>일기장 제목</h5>
-            <h5>2022-03-25</h5>
+        <!-- 다이어리 작성 칸 -->
+        <div class="diary_list writing_place">
+          <!-- 제목 -->
+          <div class="input-group mb-3 title">
+            <span class="input-group-text" id="inputGroup-sizing-default"
+              >제목</span
+            >
+            <input
+              type="text"
+              class="form-control"
+              aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default"
+            />
           </div>
-          <div class="card-body">
-            <p class="card-text">
-              오늘은 ~~ 했다. ~ 를 먹었고, ~와 함께 ~에 놀러갔다! 재밌었다.
-            </p>
+          <!-- 날짜 -->
+          <div class="total_date">
+            <!-- 연도 -->
+            <div class="big_year">
+              <select id="year" class="fyear">
+                <option selected>연도</option>
+                <option>2022</option>
+                <option>2021</option>
+                <option>2020</option>
+                <option>2019</option>
+                <option>2018</option>
+              </select>
+              <label for="year" class="year">년</label>
+            </div>
+
+            <!-- 월 -->
+            <div class="big_month">
+              <select id="month" class="month">
+                <option selected>월</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
+              </select>
+              <label for="month" class="month">월</label>
+            </div>
+
+            <!-- 일 -->
+            <div class="big_date">
+              <select id="date" class="date">
+                <option selected>일</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
+                <option>13</option>
+                <option>14</option>
+                <option>15</option>
+                <option>16</option>
+                <option>17</option>
+                <option>18</option>
+                <option>19</option>
+                <option>20</option>
+                <option>21</option>
+                <option>22</option>
+                <option>23</option>
+                <option>24</option>
+                <option>25</option>
+                <option>26</option>
+                <option>27</option>
+                <option>28</option>
+                <option>29</option>
+                <option>30</option>
+                <option>31</option>
+              </select>
+              <label for="date" class="date">일</label>
+            </div>
+          </div>
+
+          <!-- 일기 내용 -->
+          <div class="form-floating diary_content">
+            <textarea
+              class="form-control"
+              placeholder="오늘 하루를 작성해 보세요"
+              id="floatingTextarea2"
+              style="height: 300px"
+            ></textarea>
+          </div>
+
+          <!-- 파일 업로드 -->
+          <div class="mb-3 file_upload">
+            <label for="formFile" class="form-label"
+              >올리고 싶은 사진을 첨부해보세요</label
+            >
+            <input class="form-control" type="file" id="formFile" />
+          </div>
+
+          <!-- 버튼들 -->
+          <div class="buttons">
+            <!-- 목록 버튼 -->
+            <a class="lists_button_anchor" href="personal_main.html">
+              <button
+                type="button"
+                class="lists_button btn btn-outline-secondary"
+              >
+                목록
+              </button>
+            </a>
+            <!-- 업로드 버튼 -->
+            <a class="upload_button_anchor" href="personal_main.html">
+              <button
+                type="button"
+                class="upload_button btn btn-outline-secondary"
+              >
+                업로드
+              </button>
+            </a>
           </div>
         </div>
-        <div class="card">
-          <div class="card-header">
-            <h5>일기장 제목</h5>
-            <h5>2022-03-25</h5>
+
+        <!-- 다이어리 리스트 -->
+        <div class="diary_list diary_lists">
+          <div class="card">
+            <div class="card-header">
+              <h5>일기장 제목</h5>
+              <h5>2022-03-25</h5>
+            </div>
+            <div class="card-body">
+              <p class="card-text">
+                오늘은 ~~ 했다. ~ 를 먹었고, ~와 함께 ~에 놀러갔다! 재밌었다.
+              </p>
+            </div>
           </div>
-          <div class="card-body">
-            <p class="card-text">
-              오늘은 ~~ 했다. ~ 를 먹었고, ~와 함께 ~에 놀러갔다! 재밌었다.
-            </p>
+          <div class="card">
+            <div class="card-header">
+              <h5>일기장 제목</h5>
+              <h5>2022-03-25</h5>
+            </div>
+            <div class="card-body">
+              <p class="card-text">
+                오늘은 ~~ 했다. ~ 를 먹었고, ~와 함께 ~에 놀러갔다! 재밌었다.
+              </p>
+            </div>
           </div>
         </div>
       </div>
+
       <!-- 글쓰기 버튼 -->
-      <a class="write_button_anchor" href="write.html">
+      <a class="write_button_anchor" href="#">
         <button type="button" class="btn btn-outline-secondary">
           일기장 쓰기
         </button>
       </a>
     </div>
   </body>
+  <script src="js/clickWritingButton.js"></script>
 </html>
