@@ -3,7 +3,7 @@
   justify-content: space-between;
   position: relative;
   top: -2px;
-  background-color: var(--grey-color);
+  background-color: var(--yellow-color);
   border-top-left-radius: 28px;
   border-top-right-radius: 28px;
 }

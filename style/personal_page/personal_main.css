@@ -1,3 +1,7 @@
+.personal_body {
+  background-color: #4c6676;
+}
+
 .personal_diary_contents {
   display: flex;
   justify-content: flex-start;
@@ -27,8 +31,4 @@
 
 .first_h6 {
   margin-top: 15px;
-}
-
-.personal_diary_explaination {
-  margin: 30px 20px;
 }

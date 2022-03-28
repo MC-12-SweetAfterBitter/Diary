@@ -1,9 +1,12 @@
 :root {
   /* navbar color */
-  --main-color: #f5f5f5;
+  /*--main-color: #f5f5f5;*/
+  --main-color: #cbd5d4;
   /* navbar:hover */
   --grey-dark-color: #343a40;
+  --button-color: #8e8e8e;
   --grey-color: #c2c2c2;
   /* personal diary background color */
   --beige-color: #e4e4e4;
+  --yellow-color: #f7f7ef;
 }
