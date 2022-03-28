@@ -37,3 +37,43 @@
     padding: 15px;
     padding-top: 23px;
 }
+
+.writing_place {
+  padding: 0px 30px;
+  display: none;
+}
+
+.total_date {
+  display: flex;
+  justify-content: left;
+  margin: 12px 0px;
+}
+
+.big_year,
+.big_month,
+.big_date {
+  margin-right: 20px;
+}
+
+.diary_content {
+  margin-bottom: 10px;
+}
+
+.file_upload {
+  margin-top: 30px;
+}
+.buttons {
+  display: flex;
+  justify-content: right;
+}
+.lists_button,
+.upload_button {
+  width: 100px;
+  height: 35px;
+  margin: 10px;
+  font-size: 15px;
+}
+
+.active {
+  display: block;
+}
