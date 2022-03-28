@@ -1,35 +1,39 @@
 .personal_diary_contents {
-  display: flex;
-  justify-content: flex-start;
+    display: flex;
+    justify-content: flex-start;
 }
 
 .diary_list {
-  width: 880px;
-  height: 100%;
-  /*display: auto; 오류발생 하는 듯*/
-  background-color: white;
-  margin: 50px 0px;
-  border-radius: 40px;
+    width: 880px;
+    height: 100%;
+    /*display: auto; 오류발생 하는 듯*/
+    background-color: white;
+    margin: 50px 0px;
+    border-radius: 40px;
 }
 
 .card {
-  margin: 50px 20px;
-  height: 218px;
-  border-radius: 30px;
+    margin: 50px 20px;
+    height: 218px;
+    border-radius: 30px;
 }
+
 .card-body {
-  padding: 15px;
-  padding-top: 23px;
+    padding: 15px;
+    padding-top: 23px;
 }
 
 .card-body h6 {
-  padding: 5px 0px;
+    padding: 5px 0px;
 }
 
 .first_h6 {
-  margin-top: 15px;
+    margin-top: 15px;
 }
 
-.personal_diary_explaination {
-  margin: 30px 20px;
+
+.gonggam_diary_explaination {
+    margin: 30px 20px;
+    padding: 15px;
+    padding-top: 23px;
 }
