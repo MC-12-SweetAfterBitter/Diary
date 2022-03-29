@@ -1,10 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
+.signup-from-body {
+  background-color: #CBD5D4;
+  display: flex;
+  justify-content: center;
+  height: 608px;
+  width: 100%;
+  align-content: flex-start;
+  flex-wrap: wrap;
+}
+
 * {margin: 0; padding: 0; box-sizing: border-box;}
-body {
+
+
+.signup-from-body {
     font-family: 'Noto Sans KR', sans-serif;
-    display: flex;
-    justify-content: center;
     align-items: center;
     height: 100vh;
     /*background: url('../static/bg.jpg') no-repeat center;*/
@@ -12,24 +22,23 @@ body {
     background-color: #CBD5D4;
     background-size: cover;
 }
-body::before {
-    content: "";
+.signup-from-body::before {
     position: absolute; z-index: 1;
     top: 0; right: 0; bottom: 0; left: 0;
     /*background-color: rgba(0, 0, 0,.7);*/
 }
 
-.login-from {
+.signup-from {
     position: relative; z-index: 2;
     background-color: #fff;
     width: 532px;
-    height: 532px;
+    height: 700px;
     padding: 50px;
     margin: 50px;
     /*box-shadow: 5px 5px 5px 5px gray;*/
     border-radius: 35px;
 }
-.login-from h1 {
+.signup-from h1 {
     font-size: 32px; color: #999;
     text-align: center;
     margin-bottom: 60px;
@@ -50,7 +59,7 @@ body::before {
 }
 .int-area label {
     position: absolute; left: 10px; top: 15px;
-    font-size: 25px; color: #999;
+    font-size: 23px; color: #999;
     transition: all .5s ease;
 }
 .int-area label.warning {
@@ -71,12 +80,12 @@ body::before {
 }
 
 .btn-area {
-    margin-top: 50px;
+    margin-top: 40px;
 }
 .btn-area button {
     width: 400px; height: 65px;
     display: table; margin-left: auto; margin-right: auto;
-    background: #8595A6;
+    background: #CBD5D4;
     color: #fff;
     font-size: 30px;
     border: none;
@@ -85,7 +94,7 @@ body::before {
 }
 
 .caption {
-    margin-top: 20px;
+    margin-top: 15px;
     text-align: center;
 }
 .caption a {
@@ -93,6 +102,9 @@ body::before {
     text-decoration: none;
 }
 
+.label2 {
+    margin-right: 15px;
+}
 
 
 
