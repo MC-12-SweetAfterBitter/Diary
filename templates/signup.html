@@ -34,6 +34,34 @@
     <!-- CSS -->
     <link rel="stylesheet" href="../style/signuppage/signup.css" />
     <title>Sign UP</title>
+    <script>
+        function postId() {
+                //html중 입력 받는 input의 id value 각 각을 변수로 만듬
+                let id = $('#id').val()
+                let em = $('#em').val()
+                let pw = $('#pw').val()
+                let pwcf = $('#pwcf').val()
+                $.ajax({
+                    type: "POST",
+                    url: "/signup/info",
+                    data: {name_give:id, email_give:em,password_give:pw,
+                    pwcf_give:pwcf},
+                    success: function (response) { // 성공하면
+
+                        if(response['ans']=='success'){
+                            alert(response["msg"]);
+                            window.location.reload()
+                            // location.replace("index.html")
+                        }else{
+                            alert(response["msg"]);
+                            // window.location.reload()
+                        }
+                    }
+                })
+            }
+
+    </script>
+
   </head>
 
   <body>
@@ -98,7 +126,7 @@
               </div>
               <!--회원가입 진행-->
               <div class="btn-area">
-                  <button id="btn" type="submit" onclick="postId">SIGN UP</button>
+                  <button id="btn" type="submit" onclick="postId()">SIGN UP</button>
               </div>
       </section>
   </div>
