@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
 .login-from-body {
-  background-color: #e2e2e4;
+  background-color: #CBD5D4;
   display: flex;
   justify-content: center;
   height: 608px;
@@ -19,7 +19,7 @@
     height: 100vh;
     /*background: url('../static/bg.jpg') no-repeat center;*/
     /*background: url('../../소스파일/sky-g92bfbed39_1920.jpg') no-repeat center;*/
-    background-color: #999;
+    background-color: #CBD5D4;
     background-size: cover;
 }
 .login-from-body::before {
@@ -59,7 +59,7 @@
 }
 .int-area label {
     position: absolute; left: 10px; top: 15px;
-    font-size: 25px; color: #999;
+    font-size: 23px; color: #999;
     transition: all .5s ease;
 }
 .int-area label.warning {
@@ -85,7 +85,7 @@
 .btn-area button {
     width: 400px; height: 65px;
     display: table; margin-left: auto; margin-right: auto;
-    background: #c0c0c1;
+    background: #CBD5D4;
     color: #fff;
     font-size: 30px;
     border: none;
