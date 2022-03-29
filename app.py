@@ -26,8 +26,7 @@ def login_page():
     if "email" in session:
         # return jsonify({"ans":"success"},{"msg" : "환영합니다 {}님".format(escape(session['name']))})
         return "환영합니다 {}님".format(escape(session['email']))
-    else:
-        return render_template('login.html')
+    return render_template('login.html')
 
 # 개인 일기장 보여주기
 @app.route('/personal')
@@ -86,8 +85,8 @@ def login():
                 return redirect(url_for('login_page'))
             pass
 
-    else:
-        return redirect(url_for('login_page'))
+    # else:
+    #     return redirect(url_for('login_page'))
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5500, debug=True)
