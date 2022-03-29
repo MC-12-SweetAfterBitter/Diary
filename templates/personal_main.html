@@ -99,6 +99,7 @@
       </div>
 
       <div class="diary_list">
+        <form name="form" action="/personal" method="post">
         <!-- 다이어리 작성 칸 -->
         <div class="diary_list writing_place">
           <!-- 제목 -->
@@ -111,13 +112,14 @@
               class="form-control"
               aria-label="Sizing example input"
               aria-describedby="inputGroup-sizing-default"
+              name="title"
             />
           </div>
           <!-- 날짜 -->
           <div class="total_date">
             <!-- 연도 -->
             <div class="big_year">
-              <select id="year" class="fyear">
+              <select id="year" class="fyear" name="year">
                 <option selected>연도</option>
                 <option>2022</option>
                 <option>2021</option>
@@ -130,7 +132,7 @@
 
             <!-- 월 -->
             <div class="big_month">
-              <select id="month" class="month">
+              <select id="month" class="month" name="month">
                 <option selected>월</option>
                 <option>1</option>
                 <option>2</option>
@@ -150,7 +152,7 @@
 
             <!-- 일 -->
             <div class="big_date">
-              <select id="date" class="date">
+              <select id="date" class="date" name="day">
                 <option selected>일</option>
                 <option>1</option>
                 <option>2</option>
@@ -195,6 +197,7 @@
               placeholder="오늘 하루를 작성해 보세요"
               id="floatingTextarea2"
               style="height: 300px"
+              name="contents"
             ></textarea>
           </div>
 
@@ -220,7 +223,7 @@
             <!-- 업로드 버튼 -->
             <a class="upload_button_anchor" href="/personal">
               <button
-                type="button"
+                type="submit"
                 class="upload_button btn btn-outline-secondary"
               >
                 업로드
@@ -228,7 +231,7 @@
             </a>
           </div>
         </div>
-
+      </form>
         <!-- 다이어리 리스트 -->
         <div class="diary_list diary_lists"></div>
       </div>

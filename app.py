@@ -1,14 +1,24 @@
 from flask import Flask, render_template, jsonify, request, session, redirect, url_for, escape
 from datetime import timedelta
+from pymongo import MongoClient
+from flask_pymongo import PyMongo
+from bson.objectid import ObjectId
+import time, flask_abort
 app = Flask(__name__)
 
-from pymongo import MongoClient
+
 
 client = MongoClient('localhost', 27017)
 db = client.SweetAfterBitter
 
+app = Flask(__name__)
 app.secret_key = 'secretkey_soieoefs0f39fnsjdbf'  # secret_key는 서버상에 동작하는 어플리케이션 구분하기 위해 사용하고 복잡하게 만들어야 합니다.
 app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(seconds=5) # 로그인 지속시간을 정합니다. 현재 1분
+app.config["MONGO_URI"] = "mongodb://localhost:27017/SweetAfterBitter"
+app.config['SECRET_KEY'] = 'psswrd'
+
+mongo = PyMongo(app)
+aaa = mongo.db.diary
 
 # 홈 화면 보여주기
 @app.route('/')
@@ -86,8 +96,60 @@ def login():
                 return redirect(url_for('login_page'))
             pass
 
-    # else:
-    #     return redirect(url_for('login_page'))
+
+        return render_template("login.html")
+
+# 글쓰기(POST) API
+@app.route('/personal', methods=['GET', 'POST'])
+def write():
+    if request.method == "POST":
+        cur_time = time.strftime("%y%m%d_%H%M%S")
+        title = request.form.get('title')
+        contents = request.form.get('contents')
+        year = request.form.get('year')
+        month = request.form.get('month')
+        day = request.form.get('day')
+        date = year + "년 " + month + "월 " + day +"일"
+        db = {
+            'title': title,
+            'contents': contents,
+            'pubdate': cur_time,
+            'date' : date
+        }
+        db = aaa.insert_one(db)
+
+        return redirect(url_for('diary_rd', idx=db.inserted_id))
+    else:
+        return render_template('personal_main.html')
+
+
+
+
+# 글보기(GET) API
+@app.route("/bulletin_rd")
+def bulletin_rd():
+    print("arg :", request.args.get("idx"))
+    if request.args.get("idx"):
+        idx = request.args.get("idx")
+        aaa = mongo.db.diary
+        print("idx :", type(idx))
+        print("ObjectId(idx) :", type(ObjectId(idx)))
+        print(aaa.find_one({"_id": ObjectId(idx)}))
+        if aaa.find_one({"_id": ObjectId(idx)}):
+            diary_data = aaa.find_one({"_id": ObjectId(idx)})
+            # db에서 찾을때 _id 값은 string이 아닌 ObjectId로 바꿔야함
+            print(diary_data)
+            if diary_data != "":
+                db_data = {
+                    "id": diary_data.get("_id"),
+                    "title": diary_data.get("title"),
+                    "contents": diary_data.get("contents"),
+                    "pubdate": diary_data.get("pubdate")
+                }
+
+                return render_template("diary_rd.html", db_data=db_data)
+        return abort(404)
+    return abort(404)
 
 
 # 로그아웃(POST) API
