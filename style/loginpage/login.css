@@ -1,12 +1,12 @@
 /* Components */
-@import url("loginpage/login_navbar.css");
-@import url("loginpage/login_form.css");
+@import url("login_navbar.css");
+@import url("login_form.css");
 @import url("mainpage/main_contents.css");
 @import url("mainpage/personal_main.css");
 @import url("mainpage/diary_list.css");
 
 /* variable & font */
-@import url("variable.css");
+@import url("loginpage/variable.css");
 @import url("https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap");
 
 /* font */

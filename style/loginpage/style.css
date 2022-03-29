@@ -9,7 +9,7 @@ body {
     height: 100vh;
     /*background: url('../static/bg.jpg') no-repeat center;*/
     /*background: url('../../소스파일/sky-g92bfbed39_1920.jpg') no-repeat center;*/
-    background-color: #CBD5D4;
+    background-color: #F7EEDF;
     background-size: cover;
 }
 body::before {
@@ -23,14 +23,14 @@ body::before {
     position: relative; z-index: 2;
     background-color: #fff;
     width: 532px;
-    height: 532px;
+    height: 700px;
     padding: 50px;
     margin: 50px;
     /*box-shadow: 5px 5px 5px 5px gray;*/
     border-radius: 35px;
 }
 .login-from h1 {
-    font-size: 32px; color: #999;
+    font-size: 32px; color: #948B86;
     text-align: center;
     margin-bottom: 60px;
 }
@@ -45,12 +45,12 @@ body::before {
     background-color: transparent;
     border: none;
     border-bottom: 1px solid #999;
-    font-size: 30px; color: #A3B5B4;
+    font-size: 30px; color: #948B86;
     outline: none;
 }
 .int-area label {
     position: absolute; left: 10px; top: 15px;
-    font-size: 25px; color: #999;
+    font-size: 25px; color: #948B86;
     transition: all .5s ease;
 }
 .int-area label.warning {
@@ -67,7 +67,7 @@ body::before {
 .int-area input:focus + label,
 .int-area input:valid + label {
     top: 0;
-    font-size: 17px; color: #8595A6;
+    font-size: 17px; color: #736d68;
 }
 
 .btn-area {
@@ -76,7 +76,7 @@ body::before {
 .btn-area button {
     width: 400px; height: 65px;
     display: table; margin-left: auto; margin-right: auto;
-    background: #8595A6;
+    background: #948B86;
     color: #fff;
     font-size: 30px;
     border: none;
