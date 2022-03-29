@@ -1,0 +1,22 @@
+.btn-outline-secondary {
+  margin-top: 50px;
+  margin-left: 65px;
+  height: 50px;
+  width: 170px;
+  border-radius: 22px;
+  font-size: 20px;
+  color: #CBD5D4;
+  border-color: #CBD5D4;
+  background-color: white;
+}
+
+.btn-outline-secondary:hover {
+  background-color:  #CBD5D4;
+  border-color: #CBD5D4;
+}
+
+.write_button_anchor:link,
+.lists_button_anchor:link,
+.upload_button_anchor:link {
+  color: #CBD5D4;
+}
