@@ -7,6 +7,9 @@ from pymongo import MongoClient
 client = MongoClient('localhost', 27017)
 db = client.SweetAfterBitter
 
+app.secret_key = 'secretkey_soieoefs0f39fnsjdbf'  # secret_key는 서버상에 동작하는 어플리케이션 구분하기 위해 사용하고 복잡하게 만들어야 합니다.
+app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(seconds=5) # 로그인 지속시간을 정합니다. 현재 1분
+
 # 홈 화면 보여주기
 @app.route('/')
 def main_page():
@@ -74,15 +77,14 @@ def login():
         print(email_receive, password_receive)
         res = db.users.find({}, {'_id': False})
 
-        # for i in res:
-        #     print(i['name'], i['password'])
         for i in res:
+            print(i)
             if i['email'] == email_receive and i['password'] == password_receive:
                 # 세션 할당 후
                 session['email'] = email_receive
                 print("세션 Id : " + session['email'])
                 return redirect(url_for('login_page'))
-
+            pass
 
     else:
         return redirect(url_for('login_page'))

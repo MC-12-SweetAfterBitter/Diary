@@ -34,6 +34,28 @@
     <!-- CSS -->
     <link rel="stylesheet" href="../style/loginpage/login.css" />
     <title>Login</title>
+
+    <script>
+        let em = $('#em');
+        let pw = $('#pw');
+        let btn = $('#btn');
+
+        $(btn).on('click', function() {
+            if ($(em).val() == "") {
+                $(em).next('label').addClass('warning');
+                setTimeout(function () {
+                    $('label').removeClass('warning')
+                },1500);
+            }
+            else if ($(pw).val() == "") {
+                $(pw).next('label').addClass('warning');
+                setTimeout(function () {
+                    $('label').removeClass('warning')
+                },1500);
+            }
+        });
+    </script>
+
   </head>
 
   <body>
@@ -80,42 +102,23 @@
           </div>
           <!-- 패스워드 -->
           <div class="int-area">
-            <input type="password" name="pw" id="pw"
+            <input type="text" name="pw" id="pw"
                    autocomplete="off" required>
             <label for="pw">PASSWORD</label>
           </div>
           <!-- 로그인 버튼 -->
           <div class="btn-area">
-            <button id="btn" type="submit" onclick="postId">LOGIN</button>
+            <button id="btn" type="submit">LOGIN</button>
           </div>
         </form>
         <!-- 회원가입 페이지 이동 -->
         <div class="caption">
-          <a href="signup.html">Sign Up</a>
+          <a href="http://192.168.35.168:5500/signup">Sign Up</a>
         </div>
       </section>
     </div>
 
-  <script>
-        let em = $('#em');
-        let pw = $('#pw');
-        let btn = $('#btn');
 
-        $(btn).on('click', function() {
-            if ($(em).val() == "") {
-                $(em).next('label').addClass('warning');
-                setTimeout(function () {
-                    $('label').removeClass('warning')
-                },1500);
-            }
-            else if ($(pw).val() == "") {
-                $(pw).next('label').addClass('warning');
-                setTimeout(function () {
-                    $('label').removeClass('warning')
-                },1500);
-            }
-        });
-    </script>
 
   </body>
 </html>
