@@ -26,7 +26,8 @@ def login_page():
     if "email" in session:
         # return jsonify({"ans":"success"},{"msg" : "환영합니다 {}님".format(escape(session['name']))})
         return "환영합니다 {}님".format(escape(session['email']))
-    return render_template('login.html')
+    else :
+        return render_template('login.html')
 
 # 개인 일기장 보여주기
 @app.route('/personal')
@@ -87,6 +88,13 @@ def login():
 
     # else:
     #     return redirect(url_for('login_page'))
+
+
+# 로그아웃(POST) API
+@app.route('/logout')
+def logout():
+    session.pop('email', None)
+    return jsonify({'msg': '로그아웃 하였습니다.'})
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5500, debug=True)
