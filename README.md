@@ -35,3 +35,8 @@ personal page에서 '일기장 쓰기' 버튼 클릭할 때마다 숨겼다 보�
 main_photo 에 position: absolute; 반영
 글자와 메인 사진을 감싸는 부모 div 생성 (class="middle")
 글자와 메인 사진 속성 및 간격 조정 position: relative; / padding
+
+3 / 29 백엔드
+회원가입 db 저장 기능 완료
+글쓰기 db 저장 기능 완료
+공감다이어리 병합 완료
