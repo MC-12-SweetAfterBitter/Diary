@@ -1,0 +1,6 @@
+.main_photo {
+  position: absolute;
+  background-image: url("../../../../Diary/style/main_page/002.png");
+  height: 100%;
+  width: 100%;
+}

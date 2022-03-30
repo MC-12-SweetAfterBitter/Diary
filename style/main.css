@@ -1,0 +1,30 @@
+/* main page */
+@import url("main_page/navbar.css");
+@import url("main_page/main_photo.css");
+@import url("main_page/main_contents.css");
+
+/* Personal page */
+@import url("personal_page/personal_main.css");
+@import url("personal_page/diary_list.css");
+@import url("personal_page/write_button.css");
+
+/* gonggam page */
+@import url("gonggam_page/gonggam_main.css");
+@import url("gonggam_page/diary_list.css");
+@import url("gonggam_page/write_button.css");
+
+/* write page */
+@import url("write_page/writing_place.css");
+
+/* variable & font */
+@import url("variable.css");
+@import url("https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap");
+
+/* font */
+* {
+  font-family: "Gowun Dodum", sans-serif;
+}
+
+body {
+  background-color: var(--beige-color);
+}
