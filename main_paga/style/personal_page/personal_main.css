@@ -1,13 +1,13 @@
-.gonggam_body {
-  background-color: #F7EEDF;
+.personal_body {
+  background-color: #4c6676;
 }
 
-.gonggam_diary_contents {
+.personal_diary_contents {
   display: flex;
   justify-content: flex-start;
 }
 
-.diary_list_2 {
+.diary_list_1 {
   width: 880px;
   height: 100%;
   background-color: white;
@@ -16,7 +16,7 @@
 }
 
 .card {
-  margin: 50px 0px 0px 20px;
+  margin: 50px 20px 0px 20px;
   width: 755px;
   height: 218px;
   border-radius: 30px;
@@ -34,7 +34,11 @@
   margin-top: 15px;
 }
 
-.gonggam_diary_explaination {
-    margin: 30px 25px;
-    padding: 15px;
+.diary_lists_1 {
+  display: flex;
+  padding-bottom: 25px;
+  margin: 20px;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
 }

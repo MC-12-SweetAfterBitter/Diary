@@ -1,0 +1,49 @@
+.gonggam_body {
+  background-color: #F7EEDF;
+}
+
+.gonggam_diary_contents {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.diary_list_2 {
+  width: 880px;
+  height: 100%;
+  background-color: white;
+  margin: 50px;
+  border-radius: 40px;
+}
+
+.card {
+  margin: 50px 20px 0px 20px;
+  width: 755px;
+  height: 218px;
+  border-radius: 30px;
+}
+.card-body {
+  margin-left: 17px;
+  padding-top: 23px;
+}
+
+.card-body h6 {
+  padding: 5px 0px 0px 0px;
+}
+
+.first_h6 {
+  margin-top: 15px;
+}
+
+.gonggam_diary_explaination {
+    margin: 30px 25px;
+    padding: 15px;
+}
+
+.diary_lists_2 {
+  display: flex;
+  padding-bottom: 25px;
+  margin: 20px;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
