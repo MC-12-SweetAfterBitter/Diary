@@ -48,10 +48,10 @@
   justify-content: left;
   margin: 12px 0px;
 }
-
+/*이 부분 지우면 글쓰기 활성화 안되는 이유를 모르겠음*/
 .big_year,
 .big_month,
-.big_date {
+.big_date, {
   margin-right: 20px;
 }
 
