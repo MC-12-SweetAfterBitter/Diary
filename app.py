@@ -23,7 +23,12 @@ aaa = mongo.db.diary
 # 홈 화면 보여주기
 @app.route('/')
 def main_page():
-    return render_template('main.html')
+    if "email" in session:
+        return render_template('main.html',
+                               Email = session['email']
+                               )
+    else :
+        return render_template('main.html')
 
 # 회원가입 화면 보여주기
 @app.route('/signup')
@@ -35,7 +40,8 @@ def signup_page():
 def login_page():
     if "email" in session:
         # return jsonify({"ans":"success"},{"msg" : "환영합니다 {}님".format(escape(session['name']))})
-        return "환영합니다 {}님".format(escape(session['email']))
+        # return "환영합니다 {}님".format(escape(session['email']))
+        return redirect(url_for('main_page'))
     else :
         return render_template('login.html')
 
@@ -90,6 +96,7 @@ def login():
         for i in res:
             print(i)
             if i['email'] == email_receive and i['password'] == password_receive:
+                session.clear()
                 # 세션 할당 후
                 session['email'] = email_receive
                 print("세션 Id : " + session['email'])
