@@ -6,10 +6,7 @@ from bson.objectid import ObjectId
 import time, flask_abort
 app = Flask(__name__)
 
-
-
 client = MongoClient('localhost', 27017)
-db = client.SweetAfterBitter
 
 app = Flask(__name__)
 app.secret_key = 'secretkey_soieoefs0f39fnsjdbf'  # secret_key는 서버상에 동작하는 어플리케이션 구분하기 위해 사용하고 복잡하게 만들어야 합니다.
@@ -18,7 +15,11 @@ app.config["MONGO_URI"] = "mongodb://localhost:27017/SweetAfterBitter"
 app.config['SECRET_KEY'] = 'psswrd'
 
 mongo = PyMongo(app)
+
+db = client.SweetAfterBitter
 aaa = mongo.db.diary
+
+###################################################################################################################################
 
 # 홈 화면 보여주기
 @app.route('/')
@@ -50,6 +51,12 @@ def login_page():
 def personal_main_page():
     return render_template('personal_main.html')
 
+# 공감 일기장 보여주기
+@app.route('/public')
+def public_main_page():
+    return render_template('public_main.html')
+
+###################################################################################################################################
 
 # 회원가입(POST) API
 @app.route('/signup/info', methods=['POST'])
@@ -117,6 +124,7 @@ def write():
         month = request.form.get('month')
         day = request.form.get('day')
         date = year + "년 " + month + "월 " + day +"일"
+
         db = {
             'title': title,
             'contents': contents,
@@ -164,6 +172,10 @@ def bulletin_rd():
 def logout():
     session.pop('email', None)
     return jsonify({'msg': '로그아웃 하였습니다.'})
+
+
+
+################################################################################################################################
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5500, debug=True)
