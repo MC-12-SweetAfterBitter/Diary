@@ -19,7 +19,7 @@ function uploadDiary_gonggam(event_1) {
 
   let temp_html = `<div class="card">
                     <div class="card-header">
-                      <h5>작성자 : ${name} / 제목 : ${title}</h5>
+                      <h5 class="card-header-title">작성자 : ${name} / 제목 : ${title}</h5>
                         <!--공감 버튼-->
                         <button type="button" class="btn btn-outline-danger">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart"
@@ -52,8 +52,8 @@ function uploadDiary_personal(event_2) {
 
   let temp_html = `<div class="card">
                     <div class="card-header">
-                      <h5>제목 : ${title}</h5>
-                      <h5>날짜 : ${diaryYear}-${diaryMonth}-${diaryDate}</h5>
+                      <h5 class="card-header-title">제목 : ${title}</h5>
+                      <h5 class="card-header-title">날짜 : ${diaryYear}-${diaryMonth}-${diaryDate}</h5>
                     </div>
                     <div class="card-body">
                       <p class="card-text">
