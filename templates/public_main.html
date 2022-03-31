@@ -66,20 +66,38 @@
             </div>
         </div>
     </nav>
-    <!-- 로그인 / 회원가입 -->
-    <div class="main_navbar2">
+    {% if session %}
+      <div class="main_navbar2">
         <nav class="navbar navbar-light bg-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="/login">로그인</a>
-            </div>
+          <div class="container-fluid">
+            <a class="navbar-brand">환영합니다 {{Email}}님!</a>
+          </div>
         </nav>
         <span>|</span>
         <nav class="navbar navbar-light bg-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="/signup">회원가입</a>
-            </div>
+          <div class="container-fluid">
+            <a class="navbar-brand" href="/logout">로그아웃</a>
+          </div>
         </nav>
+      </div>
     </div>
+      {% else %}
+      <!-- 로그인 / 회원가입 -->
+      <div class="main_navbar2">
+        <nav class="navbar navbar-light bg-light">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="/login">로그인</a>
+          </div>
+        </nav>
+        <span>|</span>
+        <nav class="navbar navbar-light bg-light">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="/signup">회원가입</a>
+          </div>
+        </nav>
+      </div>
+    </div>
+    {% endif %}
 </div>
 
 <!-- diary list -->
@@ -89,11 +107,10 @@
         <!-- 왼쪽 세로로 정렬 -->
         <div class="card" style="width: 18rem">
             <div class="card-body">
-                <h5 class="card-title">안녕하세요, OO님</h5>
+                <h5 class="card-title">안녕하세요, {{Name}}님</h5>
                 <h5 class="card-title">오늘 하루는 어떠셨나요?</h5>
-                <h6 class="card-subtitle mb-2 text-muted first_h6">이름:</h6>
-                <h6 class="card-subtitle mb-2 text-muted">아이디:</h6>
-                <h6 class="card-subtitle mb-2 text-muted">이메일:</h6>
+                <h6 class="card-subtitle mb-2 text-muted first_h6">이름:{{Name}}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">이메일:{{Email}}</h6>
             </div>
         </div>
         <!-- 공감 다이어리에 대한 설명 -->

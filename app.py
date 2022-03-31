@@ -23,13 +23,23 @@ aaa = mongo.db.diary
 # 메인 홈페이지 (HTML 화면 보여주기)
 @app.route('/')
 def main():
-    return render_template('main.html')
+    if "email" in session:
+        # return jsonify({"ans":"success"},{"msg" : "환영합니다 {}님".format(escape(session['name']))})
+        # return "환영합니다 {}님".format(escape(session['email']))
+        return render_template('main.html', Email=session['email'], Name=session['name'])
+    else:
+        return render_template('main.html')
 
 
 # 공감 다이어리 페이지
 @app.route('/public')
 def public():
-    return render_template('public_main.html')
+    if "email" in session:
+        # return jsonify({"ans":"success"},{"msg" : "환영합니다 {}님".format(escape(session['name']))})
+        # return "환영합니다 {}님".format(escape(session['email']))
+        return render_template('public_main.html', Email=session['email'], Name=session['name'])
+    else:
+        return render_template('public_main.html')
 
 
 # 개인 다이어리 페이지
@@ -152,7 +162,8 @@ def write():
 @app.route("/bulletin_rd", methods=['GET'])
 def bulletin_rd():
     # diary_data = list(aaa.find({},{'_id':False}))
-    diary_data = list(aaa.find({}, {'_id': False}).sort('date', 1))
+    diary_data = list(aaa.find({}, {'_id': False}).sort('date', 1).skip(10))
+
     # print(diary_data)
     # diary_data = list(db.diary.find({},{'_id':False}).sort({'date:1'}))
     # diary_data = list(aaa.find().sort({'date': 1}))
