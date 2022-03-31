@@ -126,6 +126,7 @@ def login():
 def write():
     if request.method == "POST":
         cur_time = time.strftime("%y%m%d_%H%M%S")
+        # id = request
         title = request.form.get('title')
         contents = request.form.get('contents')
         year = request.form.get('year')
