@@ -10,7 +10,7 @@ client = MongoClient('localhost', 27017)
 
 app = Flask(__name__)
 app.secret_key = 'secretkey_soieoefs0f39fnsjdbf'  # secret_key는 서버상에 동작하는 어플리케이션 구분하기 위해 사용하고 복잡하게 만들어야 합니다.
-app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(seconds=5) # 로그인 지속시간을 정합니다. 현재 1분
+app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(seconds=30) # 로그인 지속시간을 정합니다. 현재 1분
 app.config["MONGO_URI"] = "mongodb://localhost:27017/SweetAfterBitter"
 app.config['SECRET_KEY'] = 'psswrd'
 
@@ -43,7 +43,8 @@ def personal():
 def login_page():
     if "email" in session:
         # return jsonify({"ans":"success"},{"msg" : "환영합니다 {}님".format(escape(session['name']))})
-        return "환영합니다 {}님".format(escape(session['email']))
+        # return "환영합니다 {}님".format(escape(session['email']))
+        return render_template('main.html', Email=session['email'], Name=session['name'])
     else :
         return render_template('login.html')
 
@@ -101,9 +102,13 @@ def login():
         for i in res:
             print(i)
             if i['email'] == email_receive and i['password'] == password_receive:
+                session.clear()
                 # 세션 할당 후
                 session['email'] = email_receive
+                name = db.users.find_one({'email':session['email']})
+                session['name'] = name['name']
                 print("세션 Id : " + session['email'])
+                print(name['name'])
                 return redirect(url_for('login_page'))
             pass
 
@@ -178,7 +183,8 @@ def bulletin_rd():
 @app.route('/logout')
 def logout():
     session.pop('email', None)
-    return jsonify({'msg': '로그아웃 하였습니다.'})
+    session.pop('name', None)
+    return render_template('main.html')
 
 ##########################################################
 
