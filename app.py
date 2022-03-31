@@ -10,7 +10,7 @@ client = MongoClient('localhost', 27017)
 
 app = Flask(__name__)
 app.secret_key = 'secretkey_soieoefs0f39fnsjdbf'  # secret_key는 서버상에 동작하는 어플리케이션 구분하기 위해 사용하고 복잡하게 만들어야 합니다.
-app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(seconds=30) # 로그인 지속시간을 정합니다. 현재 1분
+app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(seconds=1800) # 로그인 지속시간을 정합니다. 현재 1분
 app.config["MONGO_URI"] = "mongodb://localhost:27017/SweetAfterBitter"
 app.config['SECRET_KEY'] = 'psswrd'
 
@@ -136,15 +136,18 @@ def login():
 def write():
     if request.method == "POST":
         cur_time = time.strftime("%y%m%d_%H%M%S")
-        # id = request
+
         title = request.form.get('title')
         contents = request.form.get('contents')
         year = request.form.get('year')
         month = request.form.get('month')
         day = request.form.get('day')
         date = year + "년 " + month + "월 " + day +"일"
+        if 'email' in session:
+            id = session['email']
 
         db = {
+            'email' : id,
             'title': title,
             'contents': contents,
             'pubdate': cur_time,
@@ -162,8 +165,9 @@ def write():
 @app.route("/bulletin_rd", methods=['GET'])
 def bulletin_rd():
     # diary_data = list(aaa.find({},{'_id':False}))
-    diary_data = list(aaa.find({}, {'_id': False}).sort('date', 1).skip(10))
-
+    diary_data = list(aaa.find({'email':session['email']}, {'_id': False}).sort('date', 1))
+    # test = list(aaa.find({}))
+    print(diary_data)
     # print(diary_data)
     # diary_data = list(db.diary.find({},{'_id':False}).sort({'date:1'}))
     # diary_data = list(aaa.find().sort({'date': 1}))
