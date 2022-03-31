@@ -35,7 +35,12 @@ def public():
 # 개인 다이어리 페이지
 @app.route('/personal')
 def personal():
-    return render_template('personal_main.html')
+    if "email" in session:
+        # return jsonify({"ans":"success"},{"msg" : "환영합니다 {}님".format(escape(session['name']))})
+        # return "환영합니다 {}님".format(escape(session['email']))
+        return render_template('personal_main.html', Email=session['email'], Name=session['name'])
+    else :
+        return render_template('login.html')
 
 
 # 로그인 페이지
