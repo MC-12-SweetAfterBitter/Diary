@@ -32,16 +32,16 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="style/style_login/login.css" />
-    <title>Login</title>
+    <link rel="stylesheet" href="../style/style_signup/signup.css" />
+    <title>Sign UP</title>
   </head>
 
   <body>
-    <div class="main_navbar">
+  <div class="main_navbar">
       <!-- navbar -->
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand nav-brand22" href="../main_paga/templates/main.html">My Online Diary</a>
+          <a class="navbar-brand nav-brand22" href="../../main_paga/templates/main.html">My Online Diary</a>
           <button
             class="navbar-toggler"
             type="button"
@@ -53,7 +53,7 @@
           >
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
+<!--          <div class="collapse navbar-collapse" id="navbarNav">-->
 <!--            <ul class="navbar-nav">-->
 <!--              <li class="nav-item">-->
 <!--                <a class="nav-link" href="personal_main.html">개인 일기장</a>-->
@@ -61,48 +61,68 @@
 <!--              <li class="nav-item">-->
 <!--                <a class="nav-link" href="#">공유 커뮤니티</a>-->
 <!--              </li>-->
-            </ul>
-          </div>
+<!--            </ul>-->
+<!--          </div>-->
         </div>
       </nav>
-    </div>
+  </div>
 
     <!-- login form -->
-    <div class="login-from-body">
-      <section class="login-from">
-        <h1>공감 다이어리 로고</h1>
-        <form action="">
-          <!-- 이메일 -->
-          <div class="int-area">
-            <input type="text" name="em" id="em"
-                   autocomplete="off" required>
-            <label for="em">USER EMAIL</label>
-          </div>
-          <!-- 패스워드 -->
-          <div class="int-area">
-            <input type="password" name="pw" id="pw"
-                   autocomplete="off" required>
-            <label for="pw">PASSWORD</label>
-          </div>
-          <!-- 로그인 버튼 -->
-          <div class="btn-area">
-            <button id="btn" type="submit" onclick="postId">LOGIN</button>
-          </div>
-        </form>
-        <!-- 회원가입 페이지 이동 -->
-        <div class="caption">
-          <a href="signup.html">Sign Up</a>
-        </div>
-      </section>
-    </div>
+  <div class="signup-from-body">
+      <section class="signup-from">
+          <h1>공감 다이어리 로고</h1>
+          <form action="">
+              <div class="int-area">
+                  <!--닉네임-->
+                  <input type="text" maxlength="6" name="id" id="id"
+                         autocomplete="off" required>
+                  <label for="id">USER NAME</label>
+              </div>
+              <!--이메일-->
+              <div class="int-area">
+                  <input type="text" name="em" id="em"
+                         autocomplete="off" required>
+                  <label for="em">USER EMAIL</label>
+              </div>
+              <!--패스워드-->
+              <div class="int-area">
+                  <input type="password" name="pw" id="pw"
+                         autocomplete="off" required>
+                  <label for="pw">PASSWORD</label>
+              </div>
+              <!--패스워드 확인-->
+              <div class="int-area">
+                  <input type="password" name="pwcf" id="pwcf"
+                         autocomplete="off" required>
+                  <label for="pwcf">PASSWORD CONFIRM</label>
+              </div>
+              <!--회원가입 진행-->
+              <div class="btn-area">
+                  <button id="btn" type="submit" onclick="postId">SIGN UP</button>
+              </div>
+              <!--이미 계정이 있는 경우 로그인-->
+              <div class="caption">
+                  <label class="label2">이미 계정이 있나요?</label><a href="login.html">Login</a>
+              </div>
+        </section>
+  </div>
 
+  <!--미입력 시 경고창-->
   <script>
+        let id = $('#id');
         let em = $('#em');
         let pw = $('#pw');
+        let pwcf = $('#pwcf');
         let btn = $('#btn');
 
         $(btn).on('click', function() {
-            if ($(em).val() == "") {
+            if ($(id).val() == "") {
+                $(id).next('label').addClass('warning');
+                setTimeout(function () {
+                    $('label').removeClass('warning')
+                },1500);
+            }
+            else if ($(em).val() == "") {
                 $(em).next('label').addClass('warning');
                 setTimeout(function () {
                     $('label').removeClass('warning')
@@ -110,6 +130,12 @@
             }
             else if ($(pw).val() == "") {
                 $(pw).next('label').addClass('warning');
+                setTimeout(function () {
+                    $('label').removeClass('warning')
+                },1500);
+            }
+            else if ($(pwcf).val() == "") {
+                $(pwcf).next('label').addClass('warning');
                 setTimeout(function () {
                     $('label').removeClass('warning')
                 },1500);
