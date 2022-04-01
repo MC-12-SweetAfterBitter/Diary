@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
-.signup-from-body {
-  background-color: #e2e2e4;
+.login-from-body {
+  background-color: #CBD5D4;
   display: flex;
   justify-content: center;
   height: 608px;
@@ -13,32 +13,32 @@
 * {margin: 0; padding: 0; box-sizing: border-box;}
 
 
-.signup-from-body {
+.login-from-body {
     font-family: 'Noto Sans KR', sans-serif;
     align-items: center;
     height: 100vh;
     /*background: url('../static/bg.jpg') no-repeat center;*/
     /*background: url('../../소스파일/sky-g92bfbed39_1920.jpg') no-repeat center;*/
-    background-color: #999;
+    background-color: #CBD5D4;
     background-size: cover;
 }
-.signup-from-body::before {
+.login-from-body::before {
     position: absolute; z-index: 1;
     top: 0; right: 0; bottom: 0; left: 0;
     /*background-color: rgba(0, 0, 0,.7);*/
 }
 
-.signup-from {
+.login-from {
     position: relative; z-index: 2;
     background-color: #fff;
     width: 532px;
-    height: 700px;
+    height: 542px;
     padding: 50px;
     margin: 50px;
     /*box-shadow: 5px 5px 5px 5px gray;*/
     border-radius: 35px;
 }
-.signup-from h1 {
+.login-from h1 {
     font-size: 32px; color: #999;
     text-align: center;
     margin-bottom: 60px;
@@ -59,7 +59,7 @@
 }
 .int-area label {
     position: absolute; left: 10px; top: 15px;
-    font-size: 25px; color: #999;
+    font-size: 23px; color: #999;
     transition: all .5s ease;
 }
 .int-area label.warning {
@@ -85,7 +85,7 @@
 .btn-area button {
     width: 400px; height: 65px;
     display: table; margin-left: auto; margin-right: auto;
-    background: #c0c0c1;
+    background: #CBD5D4;
     color: #fff;
     font-size: 30px;
     border: none;

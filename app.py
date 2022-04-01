@@ -32,14 +32,14 @@ def main():
 
 
 # 공감 다이어리 페이지
-@app.route('/public')
-def public():
+@app.route('/gonggam')
+def gonggam():
     if "email" in session:
         # return jsonify({"ans":"success"},{"msg" : "환영합니다 {}님".format(escape(session['name']))})
         # return "환영합니다 {}님".format(escape(session['email']))
-        return render_template('public_main.html', Email=session['email'], Name=session['name'])
+        return render_template('gonggam_main.html', Email=session['email'], Name=session['name'])
     else:
-        return render_template('public_main.html')
+        return render_template('gonggam_main.html')
 
 
 # 개인 다이어리 페이지
@@ -210,4 +210,4 @@ def logout():
 ##########################################################
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=5003, debug=True)
+    app.run('0.0.0.0', port=5500, debug=True)
