@@ -207,7 +207,7 @@ def bulletin_rd2():
     # diary_data = list(aaa.find({},{'_id':False}))
     diary_data = list(bbb.find({}, {'_id': False}).sort('pubdate', 1))
     # test = list(aaa.find({}))
-    print(diary_data)
+    # print(diary_data)
     # print(diary_data)
     # diary_data = list(db.diary.find({},{'_id':False}).sort({'date:1'}))
     # diary_data = list(aaa.find().sort({'date': 1}))
@@ -216,16 +216,19 @@ def bulletin_rd2():
 @app.route('/api/like', methods=['POST'])
 def like_star():
     # 이름 받음
-    name_receive = request.form['name_give']
+    name_receive = request.form['name']
     #이름으로 찾음
     #추가로 find_one은 하나의 자료만 찾으면 되니 list를 사용하지 않는다.
-    target_star = db.mystar.find_one({'name':name_receive})
+    target_star = db.diary2.find_one({'name':name_receive})
     #like 값 가져옴
     cur_like = target_star['like']
     #새로운 like 값 갱신을 위해 임시 저장 변수
     new_like = cur_like + 1
+    print(name_receive)
+    print(target_star)
+    print(new_like)
     #갱신 , (조건, set+바꿀값)
-    db.mystar.update_one({'name': name_receive}, {'$set': {'like': new_like}})
+    db.diary2.update_one({'name': name_receive}, {'$set': {'like': new_like}})
     return jsonify({'msg': 'like +1'})
 
 

@@ -57,7 +57,7 @@
 
         function Upload() {
             //html중 입력 받는 input의 id value 각 각을 변수로 만듬
-            let name = $('#inputGroup-sizing-default_1').val()
+            let name = $('#name').val()
             let title = $('#title').val()
             let contents = $('#floatingTextarea2').val()
             $.ajax({
@@ -89,14 +89,11 @@
                                               <h5 class="card-header-title">제목 : ${title} <br> <label style="font-size: 16px"> 작성자 : ${name} </label></h5>
 
                                               <!--공감 버튼-->
-                                              <button type="button" class="btn btn-outline-danger">
+                                              <button type="button" class="btn btn-outline-danger" onclick=like('${name}')>
                                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart"
                                                        viewBox="0 0 16 16">
                                                       <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"></path>
-                                                      <a href="#" onclick="like('${name}')" class="card-footer-item has-text-info">
-
                                                   </svg>
-
                                               </button>
                                             </div>
                                             <div class="card-body au">
@@ -227,7 +224,7 @@
             <div class="writing_place pullDown">
                 <!-- 작성자 -->
                 <div class="input-group mb-3 name">
-            <span class="input-group-text" id="inputGroup-sizing-default_1" name="name"
+            <span class="input-group-text" id="inputGroup-sizing-default_1"
             >작성자</span
             >
                     <input
@@ -236,6 +233,7 @@
                             aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-default_1"
                             maxlength="8"
+                            id="name" name="name"
                     />
                 </div>
                 <!-- 제목 -->
