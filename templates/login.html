@@ -33,6 +33,13 @@
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="../static/css/account_page/loginpage/login.css" />
+    <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link href="../static/css/CSS3.css" rel="stylesheet">
+    <link href="../static/css/hover.css" rel="stylesheet">
+
     <title>Login</title>
       <script>
         let em = $('#em');
@@ -61,7 +68,7 @@
       <!-- navbar -->
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand nav-brand22" href="/">My Online Diary</a>
+          <a class="navbar-brand nav-brand22 hvr-grow" href="/">My Online Diary</a>
           <button
             class="navbar-toggler"
             type="button"
@@ -88,7 +95,7 @@
     </div>
 
     <!-- login form -->
-    <div class="login-from-body">
+    <div class="login-from-body animate__animated animate__fadeInUp animate__slow 0.3s">
       <section class="login-from">
         <h1>공감 다이어리 로고</h1>
         <form action="/login/info" method="post">
@@ -111,7 +118,7 @@
         </form>
         <!-- 회원가입 페이지 이동 -->
         <div class="caption">
-          <a href="/signup">Sign Up</a>
+          <a class="hvr-grow" href="/signup">Sign Up</a>
         </div>
       </section>
     </div>

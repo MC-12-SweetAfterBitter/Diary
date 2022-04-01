@@ -18,6 +18,7 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
@@ -31,12 +32,24 @@
     ></script>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="../static/css/main_page/main.css" />
+    <link rel="stylesheet" href="../static/css/main_page/navbar.css" />
+    <link rel="stylesheet" href="../static/css/main_page/write_page/writing_place.css" />
+    <link rel="stylesheet" href="../static/css/main_page/variable.css" />
+    <link rel="stylesheet" href="../static/css/main_page/personal_page/personal_main.css" />
+    <link rel="stylesheet" href="../static/css/main_page/personal_page/write_button.css" />
+    <link rel="stylesheet" href="../static/css/main_page/personal_page/diary_list.css" />
+
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link href="../static/css/hover.css" rel="stylesheet">
+    <link href="../static/css/CSS3.css" rel="stylesheet">
+
     <title>My Online Diary > 개인 일기장</title>
     <script>
         $(document).ready(function () {
         diary_list();
-
       });
 
         function Upload() {
@@ -51,8 +64,11 @@
                 url: "/personal",
                 data: {title: title, year: year, month: month, day: day, contents: contents},
                 success: function (response) { // 성공하면
-                    alert(response["msg"]);
-                    window.location.reload()
+                    if (response['ans'] == 'success') {
+                        alert(response["msg"]);
+                        window.location.reload()
+                        // location.replace("index.html")
+                    }
                 }
             })
         }
@@ -83,7 +99,6 @@
 
                     $(".diary_lists").append(temp_html);
                     }
-
                 }
             })
         }
@@ -95,7 +110,7 @@
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand nav-brand22" href="/"
+        <a class="navbar-brand nav-brand22 hvr-grow" href="main.html"
         >My Online Diary</a
         >
         <button
@@ -112,10 +127,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="/gonggam">공유 다이어리</a>
+              <a class="nav-link hvr-grow" href="gonggam_main.html">공유 다이어리</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/personal">개인 다이어리</a>
+              <a class="nav-link hvr-grow" href="personal_main.html">개인 다이어리</a>
             </li>
           </ul>
         </div>
@@ -126,13 +141,13 @@
       <div class="main_navbar2">
         <nav class="navbar navbar-light bg-light">
           <div class="container-fluid">
-            <a class="navbar-brand">환영합니다 {{Email}}님!</a>
+            <a class="navbar-brand hvr-grow">환영합니다 {{Email}}님!</a>
           </div>
         </nav>
         <span>|</span>
         <nav class="navbar navbar-light bg-light">
           <div class="container-fluid">
-            <a class="navbar-brand" href="/logout">로그아웃</a>
+            <a class="navbar-brand hvr-grow" href="/logout">로그아웃</a>
           </div>
         </nav>
       </div>
@@ -142,13 +157,13 @@
       <div class="main_navbar2">
         <nav class="navbar navbar-light bg-light">
           <div class="container-fluid">
-            <a class="navbar-brand" href="/login">로그인</a>
+            <a class="navbar-brand hvr-grow" href="/login">로그인</a>
           </div>
         </nav>
         <span>|</span>
         <nav class="navbar navbar-light bg-light">
           <div class="container-fluid">
-            <a class="navbar-brand" href="/signup">회원가입</a>
+            <a class="navbar-brand hvr-grow" href="/signup">회원가입</a>
           </div>
         </nav>
       </div>
@@ -156,7 +171,7 @@
     {% endif %}
 
   <!-- diary list -->
-  <div class="personal_diary_contents">
+  <div class="personal_diary_contents animate__animated animate__fadeInUp animate__slow 0.7s">
     <!-- 가로로 정렬 -->
     <div>
       <!-- 왼쪽 세로로 정렬 -->
@@ -171,10 +186,10 @@
       <!-- 개인 다이어리에 대한 설명 -->
     </div>
 
-<div class="diary_list">
+<div class="diary_list_1">
         <form action="/personal" , method="post">
             <!-- 다이어리 작성 칸 -->
-            <div class="diary_list writing_place">
+            <div class="writing_place pullDown">
                 <!-- 제목 -->
                 <div class="input-group mb-3 title">
             <span class="input-group-text" id="inputGroup-sizing-default"
@@ -186,6 +201,7 @@
                             aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-default"
                             id="title" name="title"
+                            maxlength="28"
                     />
                 </div>
                 <!-- 날짜 -->
@@ -307,7 +323,7 @@
             </div>
         </form>
         <!-- 다이어리 리스트 -->
-        <div class="diary_list diary_lists"></div>
+        <div class="diary_lists_1"></div>
     </div>
 
     <!-- 글쓰기 버튼 -->

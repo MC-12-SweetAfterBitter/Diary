@@ -18,6 +18,7 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
@@ -31,66 +32,21 @@
     ></script>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="../static/css/main_page/main.css" />
+    <link rel="stylesheet" href="../static/css/main_page/navbar.css" />
+    <link rel="stylesheet" href="../static/css/main_page/write_page/writing_place.css" />
+    <link rel="stylesheet" href="../static/css/main_page/variable.css" />
+    <link rel="stylesheet" href="../static/css/main_page/gonggam_page/gonggam_main.css" />
+    <link rel="stylesheet" href="../static/css/main_page/gonggam_page/write_button.css" />
+    <link rel="stylesheet" href="../static/css/main_page/gonggam_page/diary_list.css" />
+
+    <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link href="../static/css/hover.css" rel="stylesheet">
+    <link href="../static/css/CSS3.css" rel="stylesheet">
+
     <title>My Online Diary > 공감 다이어리</title>
-
-
-      <script>
-        $(document).ready(function () {
-        diary_list();
-
-      });
-
-        function Upload() {
-            //html중 입력 받는 input의 id value 각 각을 변수로 만듬
-            let title = $('#title').val()
-            let year = $('#year').val()
-            let month = $('#month').val()
-            let day = $('#date').val()
-            let contents = $('#floatingTextarea2').val()
-            $.ajax({
-                type: "POST",
-                url: "/public",
-                data: {title: title, year: year, month: month, day: day, contents: contents},
-                success: function (response) { // 성공하면
-                    alert(response["msg"]);
-                    window.location.reload()
-                }
-            })
-        }
-
-        function diary_list() {
-            $.ajax({
-                type: "GET",
-                url: "/bulletin_rd2",
-                data: {},
-                success: function (response) {
-                    let diary_list = response['all_data']
-                    for(let i=0; i<diary_list.length; i++){
-                        let title = diary_list[i]['title']
-                        let contents = diary_list[i]['contents']
-                        let pubdate = diary_list[i]['pubdate']
-                        // let date = diary_list[i]['date']
-                        let temp_html = `<div class="card">
-                                         <div class="card-header">
-                                             <h5>${title}</h5>
-                                             <h5>${pubdate}</h5>
-                                           </div>
-                                           <div class="card-body">
-                                             <p class="card-text">
-                                                ${contents}
-                                             </p>
-                                         </div>
-                                         </div>`;
-
-                    $(".diary_lists").append(temp_html);
-                    }
-
-                }
-            })
-        }
-    </script>
-
   </head>
 
   <body class="gonggam_body">
@@ -99,7 +55,7 @@
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand nav-brand22" href="/"
+        <a class="navbar-brand nav-brand22 hvr-grow" href="/"
         >My Online Diary</a
         >
         <button
@@ -116,10 +72,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="/gonggam">공유 다이어리</a>
+              <a class="nav-link hvr-grow" href="/gonggam">공유 다이어리</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/personal">개인 다이어리</a>
+              <a class="nav-link hvr-grow" href="/personal">개인 다이어리</a>
             </li>
           </ul>
         </div>
@@ -129,13 +85,13 @@
       <div class="main_navbar2">
         <nav class="navbar navbar-light bg-light">
           <div class="container-fluid">
-            <a class="navbar-brand">환영합니다 {{Email}}님!</a>
+            <a class="navbar-brand hvr-grow">환영합니다 {{Email}}님!</a>
           </div>
         </nav>
         <span>|</span>
         <nav class="navbar navbar-light bg-light">
           <div class="container-fluid">
-            <a class="navbar-brand" href="/logout">로그아웃</a>
+            <a class="navbar-brand hvr-grow" href="/logout">로그아웃</a>
           </div>
         </nav>
       </div>
@@ -145,13 +101,13 @@
       <div class="main_navbar2">
         <nav class="navbar navbar-light bg-light">
           <div class="container-fluid">
-            <a class="navbar-brand" href="/login">로그인</a>
+            <a class="navbar-brand hvr-grow" href="/login">로그인</a>
           </div>
         </nav>
         <span>|</span>
         <nav class="navbar navbar-light bg-light">
           <div class="container-fluid">
-            <a class="navbar-brand" href="/signup">회원가입</a>
+            <a class="navbar-brand hvr-grow" href="/signup">회원가입</a>
           </div>
         </nav>
       </div>
@@ -160,7 +116,7 @@
   </div>
 
   <!-- diary list -->
-  <div class="gonggam_diary_contents">
+  <div class="gonggam_diary_contents animate__animated animate__fadeInUp animate__slow 0.7s">
     <!-- 가로로 정렬 -->
     <div>
 
@@ -181,97 +137,109 @@
       </div>
     </div>
 
-    <div class="diary_list">
-        <form action="/public" method="post">
+    <div class="diary_list_2">
         <!-- 다이어리 작성 칸 -->
-        <div class="diary_list writing_place">
+        <div class="writing_place pullDown">
+            <!-- 작성자 -->
+        <div class="input-group mb-3 name">
+            <span class="input-group-text" id="inputGroup-sizing-default_1"
+            >작성자</span
+            >
+          <input
+                  type="text"
+                  class="form-control"
+                  aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default_1"
+                  maxlength="8"
+          />
+        </div>
             <!-- 제목 -->
             <div class="input-group mb-3 title">
-              <span class="input-group-text" id="inputGroup-sizing-default"
+              <span class="input-group-text" id="inputGroup-sizing-default_2"
               >제목</span
               >
                 <input
                         type="text"
                         class="form-control"
                         aria-label="Sizing example input"
-                        aria-describedby="inputGroup-sizing-default"
-                        id="title" name="title"
+                        aria-describedby="inputGroup-sizing-default_2"
+                        maxlength="28"
                 />
             </div>
             <!-- 날짜 -->
-            <div class="total_date">
-                <!-- 연도 -->
-                <div class="big_year">
-                    <select id="year" class="fyear" name="year">
-                        <option selected>연도</option>
-                        <option>2022</option>
-                        <option>2021</option>
-                        <option>2020</option>
-                        <option>2019</option>
-                        <option>2018</option>
-                    </select>
-                    <label for="year" class="year">년</label>
-                </div>
+<!--            <div class="total_date">-->
+<!--                &lt;!&ndash; 연도 &ndash;&gt;-->
+<!--                <div class="big_year">-->
+<!--                    <select id="year" class="fyear">-->
+<!--                        <option selected>연도</option>-->
+<!--                        <option>2022</option>-->
+<!--                        <option>2021</option>-->
+<!--                        <option>2020</option>-->
+<!--                        <option>2019</option>-->
+<!--                        <option>2018</option>-->
+<!--                    </select>-->
+<!--                    <label for="year" class="year">년</label>-->
+<!--                </div>-->
 
-                <!-- 월 -->
-                <div class="big_month">
-                    <select id="month" class="month" name="month">
-                        <option selected>월</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
-                        <option>9</option>
-                        <option>10</option>
-                        <option>11</option>
-                        <option>12</option>
-                    </select>
-                    <label for="month" class="month">월</label>
-                </div>
+<!--                &lt;!&ndash; 월 &ndash;&gt;-->
+<!--                <div class="big_month">-->
+<!--                    <select id="month" class="month">-->
+<!--                        <option selected>월</option>-->
+<!--                        <option>1</option>-->
+<!--                        <option>2</option>-->
+<!--                        <option>3</option>-->
+<!--                        <option>4</option>-->
+<!--                        <option>5</option>-->
+<!--                        <option>6</option>-->
+<!--                        <option>7</option>-->
+<!--                        <option>8</option>-->
+<!--                        <option>9</option>-->
+<!--                        <option>10</option>-->
+<!--                        <option>11</option>-->
+<!--                        <option>12</option>-->
+<!--                    </select>-->
+<!--                    <label for="month" class="month">월</label>-->
+<!--                </div>-->
 
-                <!-- 일 -->
-                <div class="big_date">
-                    <select id="date" class="date" name="day">
-                        <option selected>일</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
-                        <option>9</option>
-                        <option>10</option>
-                        <option>11</option>
-                        <option>12</option>
-                        <option>13</option>
-                        <option>14</option>
-                        <option>15</option>
-                        <option>16</option>
-                        <option>17</option>
-                        <option>18</option>
-                        <option>19</option>
-                        <option>20</option>
-                        <option>21</option>
-                        <option>22</option>
-                        <option>23</option>
-                        <option>24</option>
-                        <option>25</option>
-                        <option>26</option>
-                        <option>27</option>
-                        <option>28</option>
-                        <option>29</option>
-                        <option>30</option>
-                        <option>31</option>
-                    </select>
-                    <label for="date" class="date">일</label>
-                </div>
-            </div>
+<!--                &lt;!&ndash; 일 &ndash;&gt;-->
+<!--                <div class="big_date">-->
+<!--                    <select id="date" class="date">-->
+<!--                        <option selected>일</option>-->
+<!--                        <option>1</option>-->
+<!--                        <option>2</option>-->
+<!--                        <option>3</option>-->
+<!--                        <option>4</option>-->
+<!--                        <option>5</option>-->
+<!--                        <option>6</option>-->
+<!--                        <option>7</option>-->
+<!--                        <option>8</option>-->
+<!--                        <option>9</option>-->
+<!--                        <option>10</option>-->
+<!--                        <option>11</option>-->
+<!--                        <option>12</option>-->
+<!--                        <option>13</option>-->
+<!--                        <option>14</option>-->
+<!--                        <option>15</option>-->
+<!--                        <option>16</option>-->
+<!--                        <option>17</option>-->
+<!--                        <option>18</option>-->
+<!--                        <option>19</option>-->
+<!--                        <option>20</option>-->
+<!--                        <option>21</option>-->
+<!--                        <option>22</option>-->
+<!--                        <option>23</option>-->
+<!--                        <option>24</option>-->
+<!--                        <option>25</option>-->
+<!--                        <option>26</option>-->
+<!--                        <option>27</option>-->
+<!--                        <option>28</option>-->
+<!--                        <option>29</option>-->
+<!--                        <option>30</option>-->
+<!--                        <option>31</option>-->
+<!--                    </select>-->
+<!--                    <label for="date" class="date">일</label>-->
+<!--                </div>-->
+<!--            </div>-->
 
             <!-- 일기 내용 -->
             <div class="form-floating diary_content">
@@ -280,7 +248,6 @@
                       placeholder="오늘 하루를 작성해 보세요"
                       id="floatingTextarea2"
                       style="height: 300px"
-                      name="contents"
               ></textarea>
             </div>
 
@@ -305,19 +272,18 @@
                 </a>
                 <!-- 업로드 버튼 -->
                 <a class="upload_button_anchor" href="/public">
-                    <button
-                            type="submit"
+                    <button onclick=Upload();
+                            type="button"
                             class="upload_button btn btn-outline-secondary"
-                            onclick=Upload();
                     >
                         업로드
                     </button>
                 </a>
             </div>
         </div>
-        </form>
+
         <!-- 다이어리 리스트 -->
-        <div class="diary_list diary_lists"></div>
+        <div class="diary_list_2"></div>
     </div>
 
     </div>

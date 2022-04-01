@@ -1,7 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap");
+
+/* font */
+* {
+  font-family: "Gowun Dodum", sans-serif;
+}
+
 .btn-outline-secondary {
   position: center;
   margin-top: 50px;
-  margin-left: 65px;
+  margin-left: 20px;
   height: 50px;
   width: 170px;
   border-radius: 22px;

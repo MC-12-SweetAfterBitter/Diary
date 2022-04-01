@@ -18,7 +18,6 @@ mongo = PyMongo(app)
 
 db = client.SweetAfterBitter
 aaa = mongo.db.diary
-bbb = mongo.db.diary2
 
 
 # 메인 홈페이지 (HTML 화면 보여주기)
@@ -132,7 +131,7 @@ def login():
         return render_template("login.html")
 
 
-# 개인 글쓰기(POST) API
+# 글쓰기(POST) API
 @app.route('/personal', methods=['GET', 'POST'])
 def write():
     if request.method == "POST":
@@ -154,8 +153,7 @@ def write():
             'pubdate': cur_time,
             'date' : date
         }
-        aaa.insert_one(db)
-
+        db = aaa.insert_one(db)
         redirect(url_for('bulletin_rd'))
         return jsonify({'ans': 'success', 'msg': "작성 완료"})
     else:
@@ -163,11 +161,11 @@ def write():
 
 
 
-# 개인 글보기(GET) API
+# 글보기(GET) API
 @app.route("/bulletin_rd", methods=['GET'])
 def bulletin_rd():
     # diary_data = list(aaa.find({},{'_id':False}))
-    diary_data = list(aaa.find({'email':session['email']}, {'_id': False}).sort('date', 1))
+    diary_data = list(aaa.find({'email':session['email']}, {'_id': False}).sort('date', -1))
     # test = list(aaa.find({}))
     print(diary_data)
     # print(diary_data)
@@ -175,46 +173,34 @@ def bulletin_rd():
     # diary_data = list(aaa.find().sort({'date': 1}))
     return jsonify({'all_data': diary_data})
 
-# 공유 글쓰기(POST) API
-@app.route('/public', methods=['GET', 'POST'])
-def write2():
-    if request.method == "POST":
-        cur_time = time.strftime("%y%m%d_%H%M%S")
-
-        title = request.form.get('title')
-        contents = request.form.get('contents')
-        year = request.form.get('year')
-        month = request.form.get('month')
-        day = request.form.get('day')
-        date = year + "년 " + month + "월 " + day +"일"
-
-        db = {
-            'title': title,
-            'contents': contents,
-            'pubdate': cur_time,
-            'date' : date
-        }
-        bbb.insert_one(db)
-
-        redirect(url_for('bulletin_rd2'))
-        return jsonify({'ans': 'success', 'msg': "작성 완료"})
-    else:
-        return render_template('gonggam_main.html')
 
 
 
-# 개인 글보기(GET) API
-@app.route("/bulletin_rd2", methods=['GET'])
-def bulletin_rd2():
-    # diary_data = list(aaa.find({},{'_id':False}))
-    diary_data = list(bbb.find({}, {'_id': False}).sort('pubdate', 1))
-    # test = list(aaa.find({}))
-    print(diary_data)
-    # print(diary_data)
-    # diary_data = list(db.diary.find({},{'_id':False}).sort({'date:1'}))
-    # diary_data = list(aaa.find().sort({'date': 1}))
-    return jsonify({'all_data': diary_data})
 
+
+# # 글보기(GET) API
+# @app.route("/bulletin_rd")
+# def bulletin_rd():
+#     print("arg :", request.args.get("idx"))
+#     if request.args.get("idx"):
+#         idx = request.args.get("idx")
+#         aaa = mongo.db.diary
+#         print("idx :", type(idx))
+#         print("ObjectId(idx) :", type(ObjectId(idx)))
+#         print(aaa.find_one({"_id": ObjectId(idx)}))
+#         if aaa.find_one({"_id": ObjectId(idx)}):
+#             diary_data = aaa.find_one({"_id": ObjectId(idx)})
+#             # db에서 찾을때 _id 값은 string이 아닌 ObjectId로 바꿔야함
+#             print(diary_data)
+#             if diary_data != "":
+#                 db_data = {
+#                     "id": diary_data.get("_id"),
+#                     "title": diary_data.get("title"),
+#                     "contents": diary_data.get("contents"),
+#                     "pubdate": diary_data.get("pubdate")
+#                 }
+#
+#                 return render_template("diary_rd.html", db_data=db_data)
 
 
 

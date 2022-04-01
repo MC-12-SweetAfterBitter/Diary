@@ -1,26 +1,48 @@
-.btn-outline-secondary {
-  margin-top: 50px;
-  margin-left: 65px;
-  height: 50px;
-  width: 170px;
-  border-radius: 22px;
-  font-size: 20px;
-  color: var(--grey-dark-color);
-  border-color: var(--grey-color);
-  background-color: white;
+.writing_place {
+  width: 820px;
+  margin: 0 auto;
+  padding: 40px 20px 20px 20px;
+  display: none;
 }
 
-.btn-outline-secondary:hover {
-  background-color: var(--button-color);
-  border-color: var(--grey-color);
+.active {
+  display: block;
 }
 
-.write_button_anchor {
-  display: inline-block;
+.total_date {
+  display: flex;
+  justify-content: left;
+  margin: 12px 0px;
 }
 
-.write_button_anchor:link,
-.lists_button_anchor:link,
-.upload_button_anchor:link {
-  color: var(--grey-dark-color);
+.big_year,
+.big_month,
+.big_date {
+  margin-right: 20px;
 }
+
+.diary_content {
+  margin-bottom: 10px;
+}
+
+.file_upload {
+  margin-top: 30px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: right;
+}
+
+.lists_button,
+.upload_button {
+  width: 100px;
+  height: 35px;
+  margin: 10px;
+  font-size: 15px;
+}
+
+.au {
+  overflow: auto;
+}
+
