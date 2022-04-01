@@ -36,6 +36,7 @@
     <script>
         $(document).ready(function () {
         diary_list();
+
       });
 
         function Upload() {
@@ -50,11 +51,11 @@
                 url: "/personal",
                 data: {title: title, year: year, month: month, day: day, contents: contents},
                 success: function (response) { // 성공하면
-                    if (response['ans'] == 'success') {
-                        alert(response["msg"]);
-                        window.location.reload()
+
+                    alert(response["msg"]);
+                    window.location.reload()
                         // location.replace("index.html")
-                    }
+
                 }
             })
         }

@@ -131,7 +131,7 @@ def login():
         return render_template("login.html")
 
 
-# 글쓰기(POST) API
+# 글쓰기(POST) API (개인 다이어리)
 @app.route('/personal', methods=['GET', 'POST'])
 def write():
     if request.method == "POST":
@@ -155,7 +155,8 @@ def write():
         }
         db = aaa.insert_one(db)
 
-        return redirect(url_for('bulletin_rd', idx=db.inserted_id))
+        redirect(url_for('bulletin_rd'))
+        return jsonify({'ans': 'success', 'msg': "작성 완료"})
     else:
         return render_template('personal_main.html')
 
@@ -172,6 +173,36 @@ def bulletin_rd():
     # diary_data = list(db.diary.find({},{'_id':False}).sort({'date:1'}))
     # diary_data = list(aaa.find().sort({'date': 1}))
     return jsonify({'all_data': diary_data})
+
+# # 글쓰기(POST) API (공유 다이어리)
+# @app.route('/personal', methods=['GET', 'POST'])
+# def write():
+#     if request.method == "POST":
+#         cur_time = time.strftime("%y%m%d_%H%M%S")
+#
+#         title = request.form.get('title')
+#         contents = request.form.get('contents')
+#         year = request.form.get('year')
+#         month = request.form.get('month')
+#         day = request.form.get('day')
+#         date = year + "년 " + month + "월 " + day +"일"
+#         if 'email' in session:
+#             id = session['email']
+#
+#         db = {
+#             'email' : id,
+#             'title': title,
+#             'contents': contents,
+#             'pubdate': cur_time,
+#             'date' : date
+#         }
+#         db = aaa.insert_one(db)
+
+
+    #     return jsonify({'ans':'success', 'msg': "작성 완료"}, redirect(url_for('bulletin_rd')))
+    # else:
+    #     return render_template('personal_main.html')
+
 
 
 # # 글보기(GET) API
