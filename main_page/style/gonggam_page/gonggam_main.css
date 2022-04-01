@@ -1,18 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap");
+
+/* font */
+* {
+  font-family: "Gowun Dodum", sans-serif;
+}
+
 .gonggam_body {
   background-color: #F7EEDF;
 }
 
 .gonggam_diary_contents {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
+  margin-top: 50px;
 }
 
 .diary_list_2 {
   width: 880px;
   height: 100%;
   background-color: white;
-  margin: 50px;
+  margin-top: 50px;
+  margin-right: 50px;
+  margin-left: 50px;
   border-radius: 40px;
+  padding: 20px;
 }
 
 .card {
