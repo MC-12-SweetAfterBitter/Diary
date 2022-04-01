@@ -10,7 +10,7 @@ client = MongoClient('localhost', 27017)
 
 app = Flask(__name__)
 app.secret_key = 'secretkey_soieoefs0f39fnsjdbf'  # secret_key는 서버상에 동작하는 어플리케이션 구분하기 위해 사용하고 복잡하게 만들어야 합니다.
-app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(seconds=5) # 로그인 지속시간을 정합니다. 현재 1분
+app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(seconds=1800) # 로그인 지속시간을 정합니다. 현재 1분
 app.config["MONGO_URI"] = "mongodb://localhost:27017/SweetAfterBitter"
 app.config['SECRET_KEY'] = 'psswrd'
 
@@ -23,19 +23,34 @@ aaa = mongo.db.diary
 # 메인 홈페이지 (HTML 화면 보여주기)
 @app.route('/')
 def main():
-    return render_template('main.html')
+    if "email" in session:
+        # return jsonify({"ans":"success"},{"msg" : "환영합니다 {}님".format(escape(session['name']))})
+        # return "환영합니다 {}님".format(escape(session['email']))
+        return render_template('main.html', Email=session['email'], Name=session['name'])
+    else:
+        return render_template('main.html')
 
 
 # 공감 다이어리 페이지
-@app.route('/public')
-def public():
-    return render_template('public_main.html')
+@app.route('/gonggam')
+def gonggam():
+    if "email" in session:
+        # return jsonify({"ans":"success"},{"msg" : "환영합니다 {}님".format(escape(session['name']))})
+        # return "환영합니다 {}님".format(escape(session['email']))
+        return render_template('gonggam_main.html', Email=session['email'], Name=session['name'])
+    else:
+        return render_template('gonggam_main.html')
 
 
 # 개인 다이어리 페이지
 @app.route('/personal')
 def personal():
-    return render_template('personal_main.html')
+    if "email" in session:
+        # return jsonify({"ans":"success"},{"msg" : "환영합니다 {}님".format(escape(session['name']))})
+        # return "환영합니다 {}님".format(escape(session['email']))
+        return render_template('personal_main.html', Email=session['email'], Name=session['name'])
+    else :
+        return render_template('login.html')
 
 
 # 로그인 페이지
@@ -43,7 +58,8 @@ def personal():
 def login_page():
     if "email" in session:
         # return jsonify({"ans":"success"},{"msg" : "환영합니다 {}님".format(escape(session['name']))})
-        return "환영합니다 {}님".format(escape(session['email']))
+        # return "환영합니다 {}님".format(escape(session['email']))
+        return render_template('main.html', Email=session['email'], Name=session['name'])
     else :
         return render_template('login.html')
 
@@ -101,9 +117,13 @@ def login():
         for i in res:
             print(i)
             if i['email'] == email_receive and i['password'] == password_receive:
+                session.clear()
                 # 세션 할당 후
                 session['email'] = email_receive
+                name = db.users.find_one({'email':session['email']})
+                session['name'] = name['name']
                 print("세션 Id : " + session['email'])
+                print(name['name'])
                 return redirect(url_for('login_page'))
             pass
 
@@ -116,14 +136,18 @@ def login():
 def write():
     if request.method == "POST":
         cur_time = time.strftime("%y%m%d_%H%M%S")
+
         title = request.form.get('title')
         contents = request.form.get('contents')
         year = request.form.get('year')
         month = request.form.get('month')
         day = request.form.get('day')
         date = year + "년 " + month + "월 " + day +"일"
+        if 'email' in session:
+            id = session['email']
 
         db = {
+            'email' : id,
             'title': title,
             'contents': contents,
             'pubdate': cur_time,
@@ -131,34 +155,48 @@ def write():
         }
         db = aaa.insert_one(db)
 
-        return redirect(url_for('diary_rd', idx=db.inserted_id))
+        return redirect(url_for('bulletin_rd', idx=db.inserted_id))
     else:
         return render_template('personal_main.html')
 
 
-# 글보기(GET) API
-@app.route("/bulletin_rd")
-def bulletin_rd():
-    print("arg :", request.args.get("idx"))
-    if request.args.get("idx"):
-        idx = request.args.get("idx")
-        aaa = mongo.db.diary
-        print("idx :", type(idx))
-        print("ObjectId(idx) :", type(ObjectId(idx)))
-        print(aaa.find_one({"_id": ObjectId(idx)}))
-        if aaa.find_one({"_id": ObjectId(idx)}):
-            diary_data = aaa.find_one({"_id": ObjectId(idx)})
-            # db에서 찾을때 _id 값은 string이 아닌 ObjectId로 바꿔야함
-            print(diary_data)
-            if diary_data != "":
-                db_data = {
-                    "id": diary_data.get("_id"),
-                    "title": diary_data.get("title"),
-                    "contents": diary_data.get("contents"),
-                    "pubdate": diary_data.get("pubdate")
-                }
 
-                return render_template("diary_rd.html", db_data=db_data)
+# 글보기(GET) API
+@app.route("/bulletin_rd", methods=['GET'])
+def bulletin_rd():
+    # diary_data = list(aaa.find({},{'_id':False}))
+    diary_data = list(aaa.find({'email':session['email']}, {'_id': False}).sort('date', 1))
+    # test = list(aaa.find({}))
+    print(diary_data)
+    # print(diary_data)
+    # diary_data = list(db.diary.find({},{'_id':False}).sort({'date:1'}))
+    # diary_data = list(aaa.find().sort({'date': 1}))
+    return jsonify({'all_data': diary_data})
+
+
+# # 글보기(GET) API
+# @app.route("/bulletin_rd")
+# def bulletin_rd():
+#     print("arg :", request.args.get("idx"))
+#     if request.args.get("idx"):
+#         idx = request.args.get("idx")
+#         aaa = mongo.db.diary
+#         print("idx :", type(idx))
+#         print("ObjectId(idx) :", type(ObjectId(idx)))
+#         print(aaa.find_one({"_id": ObjectId(idx)}))
+#         if aaa.find_one({"_id": ObjectId(idx)}):
+#             diary_data = aaa.find_one({"_id": ObjectId(idx)})
+#             # db에서 찾을때 _id 값은 string이 아닌 ObjectId로 바꿔야함
+#             print(diary_data)
+#             if diary_data != "":
+#                 db_data = {
+#                     "id": diary_data.get("_id"),
+#                     "title": diary_data.get("title"),
+#                     "contents": diary_data.get("contents"),
+#                     "pubdate": diary_data.get("pubdate")
+#                 }
+#
+#                 return render_template("diary_rd.html", db_data=db_data)
 
 
 
@@ -166,9 +204,10 @@ def bulletin_rd():
 @app.route('/logout')
 def logout():
     session.pop('email', None)
-    return jsonify({'msg': '로그아웃 하였습니다.'})
+    session.pop('name', None)
+    return render_template('main.html')
 
 ##########################################################
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=5003, debug=True)
+    app.run('0.0.0.0', port=5500, debug=True)

@@ -1,6 +1,12 @@
 .writing_place {
-  padding: 0px 30px;
+  width: 780px;
+  /*padding: 0px 30px 0px 30px;*/
   display: none;
+  position: center;
+}
+
+.active {
+  display: block;
 }
 
 .total_date {
@@ -32,8 +38,4 @@
   height: 35px;
   margin: 10px;
   font-size: 15px;
-}
-
-.active {
-  display: block;
 }

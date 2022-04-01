@@ -1,12 +1,12 @@
 /* Components */
 @import url("login_navbar.css");
 @import url("login_form.css");
-@import url("../main_page/main_contents.css");
-@import url("../personal_page/personal_main.css");
-@import url("../personal_page/diary_list.css");
+/*@import url("mainpage/main_contents.css");*/
+/*@import url("mainpage/personal_main.css");*/
+/*@import url("mainpage/diary_list.css");*/
 
 /* variable & font */
-@import url("variable.css");
+/*@import url("variable.css");*/
 @import url("https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap");
 
 /* font */
@@ -15,5 +15,5 @@
 }
 
 body {
-  background-color: var(--beige-color);
+  background-color: #CBD5D4;;
 }

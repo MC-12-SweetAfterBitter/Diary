@@ -55,16 +55,31 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="/personal">개인 일기장</a>
+                <a class="nav-link" href="/gonggam">공유 다이어리</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">공유 커뮤니티</a>
+                <a class="nav-link" href="/personal">개인 다이어리</a>
               </li>
             </ul>
           </div>
         </div>
       </nav>
-
+{% if session %}
+      <div class="main_navbar2">
+        <nav class="navbar navbar-light bg-light">
+          <div class="container-fluid">
+            <a class="navbar-brand">환영합니다 {{Email}}님!</a>
+          </div>
+        </nav>
+        <span>|</span>
+        <nav class="navbar navbar-light bg-light">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="/logout">로그아웃</a>
+          </div>
+        </nav>
+      </div>
+    </div>
+      {% else %}
       <!-- 로그인 / 회원가입 -->
       <div class="main_navbar2">
         <nav class="navbar navbar-light bg-light">
@@ -80,6 +95,7 @@
         </nav>
       </div>
     </div>
+    {% endif %}
 
     <!-- main photo -->
     <div class="main_photo">
@@ -87,7 +103,6 @@
 
     <div class="middle">
       <!-- main contents -->
-      <img src="../static/img/diary.png" alt="diary" />
       <div class="main_sentences">
         <span>오늘의 기념품을 남긴다는 생각으로</span>
         <span>일기장을 채웁니다</span>
@@ -101,7 +116,7 @@
           함께 채워 보아요.</span></span>
       </div>
       <div class="main_contents">
-
+        <img src="../static/img/diary.png" alt="diary"/>
       </div>
     </div>
   </body>

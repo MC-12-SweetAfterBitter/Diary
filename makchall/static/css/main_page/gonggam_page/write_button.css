@@ -1,0 +1,27 @@
+.btn-outline-secondary {
+  position: center;
+  margin-top: 50px;
+  margin-left: 65px;
+  height: 50px;
+  width: 170px;
+  border-radius: 22px;
+  font-size: 20px;
+  color: var(--grey-dark-color);
+  border-color: var(--grey-color);
+  background-color: white;
+}
+
+.btn-outline-secondary:hover {
+  background-color: var(--button-color);
+  border-color: var(--grey-color);
+}
+
+.write_button_anchor {
+  display: inline-block;
+}
+
+.write_button_anchor:link,
+.lists_button_anchor:link,
+.upload_button_anchor:link {
+  color: var(--grey-dark-color);
+}

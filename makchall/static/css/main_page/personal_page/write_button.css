@@ -5,7 +5,7 @@
   width: 170px;
   border-radius: 22px;
   font-size: 20px;
-  color: var(--dark-grey-color);
+  color: var(--grey-dark-color);
   border-color: var(--grey-color);
   background-color: white;
 }
@@ -15,8 +15,12 @@
   border-color: var(--grey-color);
 }
 
+.write_button_anchor {
+  display: inline-block;
+}
+
 .write_button_anchor:link,
 .lists_button_anchor:link,
 .upload_button_anchor:link {
-  color: var(--dark-grey-color);
+  color: var(--grey-dark-color);
 }
