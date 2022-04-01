@@ -57,15 +57,13 @@
 
         function Upload() {
             //html중 입력 받는 input의 id value 각 각을 변수로 만듬
+            let name = $('#name').val()
             let title = $('#title').val()
-            let year = $('#year').val()
-            let month = $('#month').val()
-            let day = $('#date').val()
             let contents = $('#floatingTextarea2').val()
             $.ajax({
                 type: "POST",
                 url: "/public",
-                data: {title: title, year: year, month: month, day: day, contents: contents},
+                data: {name:name, title: title, contents: contents},
                 success: function (response) { // 성공하면
                     alert(response["msg"]);
                     window.location.reload()
@@ -73,43 +71,43 @@
             })
         }
 
-        // function diary_list() {
-        //     $.ajax({
-        //         type: "GET",
-        //         url: "/bulletin_rd2",
-        //         data: {},
-        //         success: function (response) {
-        //             let diary_list = response['all_data']
-        //             for (let i = 0; i < diary_list.length; i++) {
-        //                 let title = diary_list[i]['title']
-        //                 let contents = diary_list[i]['contents']
-        //                 let pubdate = diary_list[i]['pubdate']
-        //                 // let date = diary_list[i]['date']
-        //                 let temp_html = `<div class="card">
-        //                                     <div class="card-header">
-        //                                       <h5 class="card-header-title">제목 : ${title} <br> <label style="font-size: 16px"> 작성자 : ${pubdate} </label></h5>
-        //
-        //                                       <!--공감 버튼-->
-        //                                       <button type="button" class="btn btn-outline-danger">
-        //                                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart"
-        //                                                viewBox="0 0 16 16">
-        //                                               <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"></path>
-        //                                           </svg>
-        //                                       </button>
-        //                                     </div>
-        //                                     <div class="card-body au">
-        //                                       <p class="card-text">
-        //                                         ${contents}
-        //                                       </p>
-        //                                     </div>
-        //                                   </div>`;
-        //
-        //                 $(".diary_list_2").append(temp_html);
-        //             }
-        //
-        //         }
-        //     })
-        // }
+        function diary_list() {
+            $.ajax({
+                type: "GET",
+                url: "/bulletin_rd2",
+                data: {},
+                success: function (response) {
+                    let diary_list = response['all_data']
+                    for (let i = 0; i < diary_list.length; i++) {
+                        let title = diary_list[i]['title']
+                        let contents = diary_list[i]['contents']
+                        let pubdate = diary_list[i]['pubdate']
+                        // let date = diary_list[i]['date']
+                        let temp_html = `<div class="card">
+                                            <div class="card-header">
+                                              <h5 class="card-header-title">제목 : ${title} <br> <label style="font-size: 16px"> 작성자 : ${name} </label></h5>
+
+                                              <!--공감 버튼-->
+                                              <button type="button" class="btn btn-outline-danger">
+                                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart"
+                                                       viewBox="0 0 16 16">
+                                                      <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"></path>
+                                                  </svg>
+                                              </button>
+                                            </div>
+                                            <div class="card-body au">
+                                              <p class="card-text">
+                                                ${contents}
+                                              </p>
+                                            </div>
+                                          </div>`;
+
+                        $(".diary_list_2").append(temp_html);
+                    }
+
+                }
+            })
+        }
     </script>
 
 </head>
@@ -208,12 +206,12 @@
     </div>
 
     <div class="diary_list_2">
-        <form action="/public" , method="post">
+
             <!-- 다이어리 작성 칸 -->
             <div class="writing_place pullDown">
                 <!-- 작성자 -->
                 <div class="input-group mb-3 name">
-            <span class="input-group-text" id="inputGroup-sizing-default_1"
+            <span class="input-group-text" id="inputGroup-sizing-default_1" name="name"
             >작성자</span
             >
                     <input
@@ -235,6 +233,7 @@
                             aria-label="Sizing example input"
                             aria-describedby="inputGroup-sizing-default_2"
                             maxlength="28"
+                            id = "title" name="title"
                     />
                 </div>
 
@@ -245,6 +244,7 @@
                       placeholder="오늘 하루를 작성해 보세요"
                       id="floatingTextarea2"
                       style="height: 300px"
+                      name="contents"
               ></textarea>
                 </div>
 
@@ -269,16 +269,17 @@
                     </div>
                     <!-- 업로드 버튼 -->
                     <div class="upload_button_anchor" href="/public">
-                        <button onclick=Upload();
-                                type="button"
+                        <button
+                                type="submit"
                                 class="upload_button btn btn-outline-secondary"
+                                onclick=Upload();
                         >
                             업로드
                         </button>
                     </div>
                 </div>
             </div>
-        </form>
+
         <!-- 다이어리 리스트 diary_list_2 -->
         <div class="diary_lists_2">
         </div>

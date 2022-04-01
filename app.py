@@ -181,19 +181,15 @@ def bulletin_rd():
 def write2():
     if request.method == "POST":
         cur_time = time.strftime("%y%m%d_%H%M%S")
-
+        name = request.form.get('name')
         title = request.form.get('title')
         contents = request.form.get('contents')
-        year = request.form.get('year')
-        month = request.form.get('month')
-        day = request.form.get('day')
-        date = year + "년 " + month + "월 " + day +"일"
 
         db = {
+            'name' : name,
             'title': title,
             'contents': contents,
             'pubdate': cur_time,
-            'date' : date
         }
         bbb.insert_one(db)
 
