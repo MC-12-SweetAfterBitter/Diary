@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../style/style_signup/signup.css" />
+    <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link href="/main_page/style/hover.css" rel="stylesheet">
+    <link href="/main_page/style/CSS3.css" rel="stylesheet">
+
+    <title>Sign UP</title>
+  </head>
+
+  <body>
+  <div class="main_navbar">
+      <!-- navbar -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand nav-brand22 hvr-grow" href="../../main_page/templates/main.html">My Online Diary</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+<!--          <div class="collapse navbar-collapse" id="navbarNav">-->
+<!--            <ul class="navbar-nav">-->
+<!--              <li class="nav-item">-->
+<!--                <a class="nav-link" href="personal_main.html">개인 일기장</a>-->
+<!--              </li>-->
+<!--              <li class="nav-item">-->
+<!--                <a class="nav-link" href="#">공유 커뮤니티</a>-->
+<!--              </li>-->
+<!--            </ul>-->
+<!--          </div>-->
+        </div>
+      </nav>
+  </div>
+
+    <!-- login form -->
+  <div class="signup-from-body animate__animated animate__fadeInUp animate__slow 0.3s">
+      <section class="signup-from">
+          <h1>공감 다이어리 로고</h1>
+          <form action="">
+              <div class="int-area">
+                  <!--닉네임-->
+                  <input type="text" maxlength="6" name="id" id="id"
+                         autocomplete="off" required>
+                  <label for="id">USER NAME</label>
+              </div>
+              <!--이메일-->
+              <div class="int-area">
+                  <input type="text" name="em" id="em"
+                         autocomplete="off" required>
+                  <label for="em">USER EMAIL</label>
+              </div>
+              <!--패스워드-->
+              <div class="int-area">
+                  <input type="password" name="pw" id="pw"
+                         autocomplete="off" required>
+                  <label for="pw">PASSWORD</label>
+              </div>
+              <!--패스워드 확인-->
+              <div class="int-area">
+                  <input type="password" name="pwcf" id="pwcf"
+                         autocomplete="off" required>
+                  <label for="pwcf">PASSWORD CONFIRM</label>
+              </div>
+              <!--회원가입 진행-->
+              <div class="btn-area">
+                  <button id="btn" type="submit" onclick="postId">SIGN UP</button>
+              </div>
+              <!--이미 계정이 있는 경우 로그인-->
+              <div class="caption">
+                  <label class="label2">이미 계정이 있나요?</label><a class="hvr-grow" href="login.html">Login</a>
+              </div>
+        </section>
+  </div>
+
+  <!--미입력 시 경고창-->
+  <script>
+        let id = $('#id');
+        let em = $('#em');
+        let pw = $('#pw');
+        let pwcf = $('#pwcf');
+        let btn = $('#btn');
+
+        $(btn).on('click', function() {
+            if ($(id).val() == "") {
+                $(id).next('label').addClass('warning');
+                setTimeout(function () {
+                    $('label').removeClass('warning')
+                },1500);
+            }
+            else if ($(em).val() == "") {
+                $(em).next('label').addClass('warning');
+                setTimeout(function () {
+                    $('label').removeClass('warning')
+                },1500);
+            }
+            else if ($(pw).val() == "") {
+                $(pw).next('label').addClass('warning');
+                setTimeout(function () {
+                    $('label').removeClass('warning')
+                },1500);
+            }
+            else if ($(pwcf).val() == "") {
+                $(pwcf).next('label').addClass('warning');
+                setTimeout(function () {
+                    $('label').removeClass('warning')
+                },1500);
+            }
+        });
+    </script>
+
+  </body>
+</html>

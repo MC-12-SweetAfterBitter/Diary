@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap");
+
+/* font */
+* {
+  font-family: "Gowun Dodum", sans-serif;
+}
+
+.personal_body {
+  background-color: #4c6676;
+}
+
+.personal_diary_contents {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px
+}
+
+.diary_list_1 {
+  width: 880px;
+  height: 100%;
+  background-color: white;
+  margin-top: 50px;
+  margin-right: 50px;
+  margin-left: 50px;
+  border-radius: 40px;
+  padding: 20px;
+}
+
+.card {
+  margin: 50px 20px 0px 20px;
+  width: 755px;
+  height: 218px;
+  border-radius: 30px;
+}
+.card-body {
+  padding-top: 23px;
+}
+
+.card-header .card-header-title {
+  margin-top: 15px;
+}
+
+.card-body h6 {
+  padding: 5px 0px 0px 0px;
+}
+
+.first_h6 {
+  margin-top: 15px;
+}
+
+.diary_lists_1 {
+  display: flex;
+  padding-bottom: 25px;
+  margin: 20px;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}

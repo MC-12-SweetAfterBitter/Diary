@@ -1,0 +1,40 @@
+.middle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main_contents {
+  position: relative;
+  padding: 10% 0px 0px 0px;
+  /*right: -800px;*/
+  /*width: 500px;*/
+}
+
+.main_contents img {
+  width: 500px;
+  height: 301.5px;
+  border-radius: 20px;
+  box-shadow: 10px 5px 5px var(--grey-color);
+}
+
+.main_sentences {
+  position: relative;
+  width: 500px;
+  padding: 10% 0px 0px 0px;
+  /*top: -690px;*/
+  /*right: -250px;*/
+}
+
+.main_sentences span {
+  display: block;
+}
+
+.main_sentences span:first-child,
+.main_sentences span:nth-child(2) {
+  font-size: 30px;
+}
+
+.main_sentences span:nth-child(3) {
+  margin-top: 20px;
+}

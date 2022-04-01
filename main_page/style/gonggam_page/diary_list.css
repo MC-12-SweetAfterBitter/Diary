@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap");
+
+/* font */
+* {
+  font-family: "Gowun Dodum", sans-serif;
+}
+
+.diary_list_2 .card-header {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  top: -2px;
+  background-color: var(--yellow-color);
+  border-top-left-radius: 28px;
+  border-top-right-radius: 28px;
+}
+z .diary_list_2 > .card {
+  margin: 45px 30px;
+}

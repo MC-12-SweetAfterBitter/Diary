@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+.signup-from-body {
+  background-color: #CBD5D4;
+  display: flex;
+  justify-content: center;
+  height: 608px;
+  width: 100%;
+  align-content: flex-start;
+  flex-wrap: wrap;
+}
+
+* {margin: 0; padding: 0; box-sizing: border-box;}
+
+
+.signup-from-body {
+    font-family: 'Noto Sans KR', sans-serif;
+    align-items: center;
+    height: 100vh;
+    /*background: url('../static/bg.jpg') no-repeat center;*/
+    /*background: url('../../소스파일/sky-g92bfbed39_1920.jpg') no-repeat center;*/
+    background-color: #CBD5D4;
+    background-size: cover;
+}
+.signup-from-body::before {
+    position: absolute; z-index: 1;
+    top: 0; right: 0; bottom: 0; left: 0;
+    /*background-color: rgba(0, 0, 0,.7);*/
+}
+
+.signup-from {
+    position: relative; z-index: 2;
+    background-color: #fff;
+    width: 532px;
+    height: 700px;
+    padding: 50px;
+    margin: 50px;
+    /*box-shadow: 5px 5px 5px 5px gray;*/
+    border-radius: 35px;
+}
+.signup-from h1 {
+    font-size: 32px; color: #999;
+    text-align: center;
+    margin-bottom: 60px;
+}
+.int-area {
+    width: 420px; position: relative;
+    margin-top: 20px;
+}
+.int-area:first-child {margin-top: 0;}
+.int-area input {
+    width: 100%;
+    padding: 30px 10px 3px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #999;
+    font-size: 30px; color: #A3B5B4;
+    outline: none;
+}
+.int-area label {
+    position: absolute; left: 10px; top: 15px;
+    font-size: 23px; color: #999;
+    transition: all .5s ease;
+}
+.int-area label.warning {
+    color: red !important;
+    animation: warning .3s ease;
+    animation-iteration-count: 3;
+}
+@keyframes warning {
+    0% {transform: translateX(-8px);}
+    25% {transform: translateX(8px);}
+    50% {transform: translateX(-8px);}
+    75% {transform: translateX(8px);}
+}
+.int-area input:focus + label,
+.int-area input:valid + label {
+    top: 0;
+    font-size: 17px; color: #8595A6;
+}
+
+.btn-area {
+    margin-top: 40px;
+}
+.btn-area button {
+    width: 400px; height: 65px;
+    display: table; margin-left: auto; margin-right: auto;
+    background: #CBD5D4;
+    color: #fff;
+    font-size: 30px;
+    border: none;
+    border-radius: 35px;
+    cursor: pointer;
+}
+
+.caption {
+    margin-top: 15px;
+    text-align: center;
+}
+.caption a {
+    font-size: 20px; color: #999;
+    text-decoration: none;
+}
+
+.label2 {
+    margin-right: 15px;
+}
+
+
+
+
+
