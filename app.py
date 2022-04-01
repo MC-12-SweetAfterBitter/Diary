@@ -190,6 +190,7 @@ def write2():
             'title': title,
             'contents': contents,
             'pubdate': cur_time,
+            'like' : 0
         }
         bbb.insert_one(db)
 
@@ -211,6 +212,22 @@ def bulletin_rd2():
     # diary_data = list(db.diary.find({},{'_id':False}).sort({'date:1'}))
     # diary_data = list(aaa.find().sort({'date': 1}))
     return jsonify({'all_data': diary_data})
+
+@app.route('/api/like', methods=['POST'])
+def like_star():
+    # 이름 받음
+    name_receive = request.form['name_give']
+    #이름으로 찾음
+    #추가로 find_one은 하나의 자료만 찾으면 되니 list를 사용하지 않는다.
+    target_star = db.mystar.find_one({'name':name_receive})
+    #like 값 가져옴
+    cur_like = target_star['like']
+    #새로운 like 값 갱신을 위해 임시 저장 변수
+    new_like = cur_like + 1
+    #갱신 , (조건, set+바꿀값)
+    db.mystar.update_one({'name': name_receive}, {'$set': {'like': new_like}})
+    return jsonify({'msg': 'like +1'})
+
 
 
 
