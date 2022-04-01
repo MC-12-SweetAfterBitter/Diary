@@ -51,11 +51,8 @@
                 url: "/personal",
                 data: {title: title, year: year, month: month, day: day, contents: contents},
                 success: function (response) { // 성공하면
-
                     alert(response["msg"]);
                     window.location.reload()
-                        // location.replace("index.html")
-
                 }
             })
         }
