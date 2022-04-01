@@ -64,11 +64,8 @@
                 url: "/personal",
                 data: {title: title, year: year, month: month, day: day, contents: contents},
                 success: function (response) { // 성공하면
-                    if (response['ans'] == 'success') {
                         alert(response["msg"]);
                         window.location.reload()
-                        // location.replace("index.html")
-                    }
                 }
             })
         }
@@ -97,7 +94,7 @@
                                          </div>
                                          </div>`;
 
-                    $(".diary_lists").append(temp_html);
+                    $(".diary_lists_1").append(temp_html);
                     }
                 }
             })
@@ -110,7 +107,7 @@
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand nav-brand22 hvr-grow" href="main.html"
+        <a class="navbar-brand nav-brand22 hvr-grow" href="/"
         >My Online Diary</a
         >
         <button
@@ -127,10 +124,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link hvr-grow" href="gonggam_main.html">공유 다이어리</a>
+              <a class="nav-link hvr-grow" href="/gonggam">공유 다이어리</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link hvr-grow" href="personal_main.html">개인 다이어리</a>
+              <a class="nav-link hvr-grow" href="/personal">개인 다이어리</a>
             </li>
           </ul>
         </div>
