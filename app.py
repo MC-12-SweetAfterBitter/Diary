@@ -184,13 +184,19 @@ def write2():
         name = request.form.get('name')
         title = request.form.get('title')
         contents = request.form.get('contents')
+        res = bbb.find({}, {'_id': False})
 
+        for i in res:
+            print(i)
+            if i['name'] == name:
+                redirect(url_for('bulletin_rd2'))
+                return jsonify({'ans': 'success', 'msg': "이미 사용중인 작성자 입니다."})
         db = {
-            'name' : name,
+            'name': name,
             'title': title,
             'contents': contents,
             'pubdate': cur_time,
-            'like' : 0
+            'like': 0
         }
         bbb.insert_one(db)
 
@@ -198,6 +204,7 @@ def write2():
         return jsonify({'ans': 'success', 'msg': "작성 완료"})
     else:
         return render_template('gonggam_main.html')
+
 
 
 
