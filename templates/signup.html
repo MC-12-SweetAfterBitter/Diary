@@ -53,50 +53,50 @@
                     url: "/signup",
                     data: {name_give:id, email_give:em, password_give:pw, pwcf_give:pwcf},
                     success: function (response) { // 성공하면
-                        if(response['ans']=='success'){
+
                             alert(response["msg"]);
                             window.location.reload()
                             // location.replace("index.html")
-                        }
+
                     }
                 })
             }
       </script>
 <!--        &lt;!&ndash;미입력 시 경고창&ndash;&gt;-->
-<!--      <script>-->
-<!--            let id = $('#id');-->
-<!--            let em = $('#em');-->
-<!--            let pw = $('#pw');-->
-<!--            let pwcf = $('#pwcf');-->
-<!--            let btn = $('#btn');-->
+      <script>
+            let id = $('#id');
+            let em = $('#em');
+            let pw = $('#pw');
+            let pwcf = $('#pwcf');
+            let btn = $('#btn');
 
-<!--            $(btn).on('click', function() {-->
-<!--                if ($(id).val() == "") {-->
-<!--                    $(id).next('label').addClass('warning');-->
-<!--                    setTimeout(function () {-->
-<!--                        $('label').removeClass('warning')-->
-<!--                    },1500);-->
-<!--                }-->
-<!--                else if ($(em).val() == "") {-->
-<!--                    $(em).next('label').addClass('warning');-->
-<!--                    setTimeout(function () {-->
-<!--                        $('label').removeClass('warning')-->
-<!--                    },1500);-->
-<!--                }-->
-<!--                else if ($(pw).val() == "") {-->
-<!--                    $(pw).next('label').addClass('warning');-->
-<!--                    setTimeout(function () {-->
-<!--                        $('label').removeClass('warning')-->
-<!--                    },1500);-->
-<!--                }-->
-<!--                else if ($(pwcf).val() == "") {-->
-<!--                    $(pwcf).next('label').addClass('warning');-->
-<!--                    setTimeout(function () {-->
-<!--                        $('label').removeClass('warning')-->
-<!--                    },1500);-->
-<!--                }-->
-<!--            });-->
-<!--        </script>-->
+            $(btn).on('click', function() {
+                if ($(id).val() == "") {
+                    $(id).next('label').addClass('warning');
+                    setTimeout(function () {
+                        $('label').removeClass('warning')
+                    },1500);
+                }
+                else if ($(em).val() == "") {
+                    $(em).next('label').addClass('warning');
+                    setTimeout(function () {
+                        $('label').removeClass('warning')
+                    },1500);
+                }
+                else if ($(pw).val() == "") {
+                    $(pw).next('label').addClass('warning');
+                    setTimeout(function () {
+                        $('label').removeClass('warning')
+                    },1500);
+                }
+                else if ($(pwcf).val() == "") {
+                    $(pwcf).next('label').addClass('warning');
+                    setTimeout(function () {
+                        $('label').removeClass('warning')
+                    },1500);
+                }
+            });
+        </script>
   </head>
 
   <body>

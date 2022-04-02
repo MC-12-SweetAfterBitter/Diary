@@ -88,6 +88,9 @@ def user_infor():
         # 공백 처리, 해당 부분에서 약간의 오류를 발생시키면 html 스크립트 공백체크가 작동한다..
         if name_receive == '' or email_receive == '' or password_receive == '' or pwcf_receive == '':
             return jsonify({'ans': 'fail', 'msg': '공백이 있습니다'})
+        # 이메일 형식 체크 @, '.' 포함 여부 확인
+        elif '@' not in email_receive or '.' not in email_receive:
+            return jsonify({'ans': 'fail', 'msg': '이메일 형식이 아닙니다.'})
         # 회원가입 시 중복 ID, Email 처리
         elif list['name'] == name_receive or list['email'] == email_receive:
             return jsonify({'ans': 'fail', 'msg': '아이디 또는 이메일 중복!'})
