@@ -2,18 +2,45 @@
 
 /* font */
 * {
-  font-family: "Gowun Dodum", sans-serif;
+    font-family: "Gowun Dodum", sans-serif;
 }
 
 .diary_list_2 .card-header {
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-  top: -2px;
-  background-color: var(--yellow-color);
-  border-top-left-radius: 28px;
-  border-top-right-radius: 28px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    top: -2px;
+    background-color: var(--yellow-color);
+    border-top-left-radius: 28px;
+    border-top-right-radius: 28px;
 }
+
 z .diary_list_2 > .card {
-  margin: 45px 30px;
+    margin: 45px 30px;
+}
+
+.gongamBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: #f7f7ef;
+}
+
+.gongamBtn:hover {
+    cursor: pointer;
+    border: none;
+}
+
+.gongamBtn:focus {
+    outline: none;
+}
+
+.fa-heart {
+    color: #ef9a9a;
+}
+
+.fa-heart:hover {
+  color: #e57373;
+  transform: scale(1.3);
 }
