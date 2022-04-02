@@ -37,8 +37,7 @@
 - 코드 짜시면서 div 안닫혀 있는 부분 확인해주세요~
 
 #22. 4. 2. 김명진
-- 공유다이어리 DB 생성 {name, title, contents, pubdate, like}
-- Ajax 코드 추가 (Post request data, Get read DB)
+- 공유다이어리 기능 추가
 - 좋아요 기능 추가
 
 #22. 4. 3. 조수진
