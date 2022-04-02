@@ -205,7 +205,7 @@ def write2():
 @app.route("/bulletin_rd2", methods=['GET'])
 def bulletin_rd2():
     # diary_data = list(aaa.find({},{'_id':False}))
-    diary_data = list(bbb.find({}, {'_id': False}).sort('pubdate', 1))
+    diary_data = list(bbb.find({}, {'_id': False}).sort('like', -1))
     # test = list(aaa.find({}))
     # print(diary_data)
     # print(diary_data)
