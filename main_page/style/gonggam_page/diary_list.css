@@ -17,3 +17,24 @@
 z .diary_list_2 > .card {
   margin: 45px 30px;
 }
+
+.gongamBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: #f7f7ef;
+}
+
+.gongamBtn:hover {
+  cursor: pointer;
+  border: none;
+}
+
+.gongamBtn:focus {
+  outline: none;
+}
+
+.fa-heart {
+  color: #ef9a9a;
+}
