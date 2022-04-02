@@ -25,4 +25,8 @@
 #22. 4. 1. 이동현
 - 공감/개인 페이지 업로드, 목록 <a> 를 <div> 로 수정
 - 일기장 쓰기 위치 오류 수정
-- 
+
+#22. 4. 2. 이동현
+- CSS > main_page > personal_page > write_button 코드 수정
+- personal_page 내부 코드 정렬
+- 코드 짜시면서 div 안닫혀 있는 부분 확인해주세요~
