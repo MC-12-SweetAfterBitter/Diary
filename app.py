@@ -224,9 +224,11 @@ def bulletin_rd2():
 def like_star():
     # 이름 받음
     name_receive = request.form['name']
+    print(name_receive)
     #이름으로 찾음
     #추가로 find_one은 하나의 자료만 찾으면 되니 list를 사용하지 않는다.
-    target_star = db.diary2.find_one({'name':name_receive})
+    target_star = db.diary2.find_one({'name': name_receive})
+    # print("target : " + target_star)
     #like 값 가져옴
     cur_like = target_star['like']
     #새로운 like 값 갱신을 위해 임시 저장 변수
