@@ -46,8 +46,15 @@
 #22. 4. 3. 김명진
 - 회원가입 시 이메일 형식 확인하는 조건문 추가
   
-##22. 4. 4. 조수진
+#22. 4. 4. 조수진
 - 다이어리 리스트 중앙 정렬
 - 파일 첨부 폼 삭제
 - 업로드한 다이어리 삭제 불가 안내 문구 추가
 - 특정 box에 mouse hover over했을 경우, box-shadow 기능 추가
+
+#22. 4. 5. 이동현
+- gonggam_main.html : 글 리스트 제목, 작성자 부분 <div> 분류 후 위치 수정
+- gonggam_main.css / personal_main.css : card, card_body 구분화 및 조정
+- card, card_body 구분화에 따른 uploadDiary.js, gonggam_main.html, personal_main.html class 변경
+- card_body : 높이 및 폰트 사이즈 수정
+- 페이징 버튼 추가

@@ -87,14 +87,21 @@
                         // let date = diary_list[i]['date']
                         let temp_html = `<div class="card">
                                             <div class="card-header">
-                                              <h5 class="card-header-title">제목 : ${title} <br> <label style="font-size: 16px"> 작성자 : ${name} </label></h5>
+                                              <div>
+                                                  <div>
+                                                    <label class="card-header-title" style="font-size: 20px">제목 : ${title}</label>
+                                                  </div>
+                                                  <div>
+                                                    <label style="font-size: 16px">작성자 : ${name}</label>
+                                                  </div>
+                                              </div>
 
                                               <!--공감 버튼-->
                                                <button onclick=like('${name}') type="button" class="gongamBtn">
                                                 <i class="fa-solid fa-heart fa-xl"></i>+${like}
                                                </button>
                                             </div>
-                                            <div class="card-body au">
+                                            <div class="card-body_Contents au">
                                               <p class="card-text">
                                                 ${contents}
                                               </p>
@@ -203,7 +210,7 @@
 
         <!-- 왼쪽 세로로 정렬 -->
         <div class="card shadow" style="width: 18rem">
-            <div class="card-body">
+            <div class="card-body_profile">
                 {% if session %}
                 <h5 class="card-title">안녕하세요, {{Name}}님</h5>
                 <h5 class="card-title">오늘 하루는 어떠셨나요?</h5>
@@ -302,6 +309,17 @@
 
         <!-- 다이어리 리스트 diary_list_2 -->
         <div class="diary_lists_2">
+        </div>
+        <div>
+            <nav aria-label="Page navigation example">
+              <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+              </ul>
+            </nav>
         </div>
 
     </div>
