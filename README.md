@@ -49,5 +49,5 @@
 ##22. 4. 4. 조수진
 - 다이어리 리스트 중앙 정렬
 - 파일 첨부 폼 삭제
-- 삭제 불가 안내 문구 추가
-- 특정 box에 mouse hover over했을 경우, box-shadow 기능 
+- 업로드한 다이어리 삭제 불가 안내 문구 추가
+- 특정 box에 mouse hover over했을 경우, box-shadow 기능 추가
