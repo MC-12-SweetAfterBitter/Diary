@@ -60,3 +60,12 @@
 .shadow_personal:hover {
   box-shadow: rgba(200,200,200,0.5) 0px 7px 29px 0px;
 }
+
+.form-control:focus {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-color: rgba(100, 100, 111, 0.2);
+}
+
+.input-group-text {
+  background-color: #B7CFE8;
+}

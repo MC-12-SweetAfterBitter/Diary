@@ -9,6 +9,15 @@
   background-color: #F7EEDF;
 }
 
+.form-control:focus {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-color: rgba(100, 100, 111, 0.2);
+}
+
+.input-group-text {
+  background-color: #F7F7EF;
+}
+
 .gonggam_diary_contents {
   display: flex;
   justify-content: center;
