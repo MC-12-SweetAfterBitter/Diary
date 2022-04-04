@@ -1,3 +1,5 @@
+import math
+
 from flask import Flask, render_template, jsonify, request, session, redirect, url_for, escape
 from datetime import timedelta
 from pymongo import MongoClient
@@ -84,6 +86,16 @@ def user_infor():
 
     res = db.users.find({}, {'_id': False})
 
+
+    #최초 DB가 없을때도 실행하기 위해 추가함
+    if name_receive == '' or email_receive == '' or password_receive == '' or pwcf_receive == '':
+        return jsonify({'ans': 'fail', 'msg': '공백이 있습니다'})
+    elif '@' not in email_receive or '.' not in email_receive:
+        return jsonify({'ans': 'fail', 'msg': '이메일 형식이 아닙니다.'})
+    elif pwcf_receive != password_receive:
+        return jsonify({'ans': 'fail', 'msg': '비밀번호가 다릅니다'})
+
+
     for list in res:
         # 공백 처리, 해당 부분에서 약간의 오류를 발생시키면 html 스크립트 공백체크가 작동한다..
         if name_receive == '' or email_receive == '' or password_receive == '' or pwcf_receive == '':
@@ -169,14 +181,8 @@ def write():
 # 개인 글보기(GET) API
 @app.route("/bulletin_rd", methods=['GET'])
 def bulletin_rd():
-    # diary_data = list(aaa.find({},{'_id':False}))
     diary_data = list(aaa.find({'email':session['email']}, {'_id': False}).sort('date', 1))
-    # test = list(aaa.find({}))
     print(diary_data)
-    # print(diary_data)
-    # diary_data = list(db.diary.find({},{'_id':False}).sort({'date:1'}))
-    # diary_data = list(aaa.find().sort({'date': 1}))
-    
     return jsonify({'all_data': diary_data})
 
 # 공유 글쓰기(POST) API
@@ -214,13 +220,7 @@ def write2():
 # 공유 글보기(GET) API
 @app.route("/bulletin_rd2", methods=['GET'])
 def bulletin_rd2():
-    # diary_data = list(aaa.find({},{'_id':False}))
     diary_data = list(bbb.find({}, {'_id': False}).sort('like', -1))
-    # test = list(aaa.find({}))
-    # print(diary_data)
-    # print(diary_data)
-    # diary_data = list(db.diary.find({},{'_id':False}).sort({'date:1'}))
-    # diary_data = list(aaa.find().sort({'date': 1}))
     return jsonify({'all_data': diary_data})
 
 @app.route('/api/like', methods=['POST'])
@@ -242,10 +242,10 @@ def like_star():
     #갱신 , (조건, set+바꿀값)
     db.diary2.update_one({'name': name_receive}, {'$set': {'like': new_like}})
     return jsonify({'msg': 'like +1'})
+###############
 
 
-
-
+#########
 
 # 로그아웃(POST) API
 @app.route('/logout')
