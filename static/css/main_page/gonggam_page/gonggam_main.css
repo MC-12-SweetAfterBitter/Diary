@@ -61,8 +61,25 @@
 .diary_lists_2 {
   display: flex;
   padding-bottom: 25px;
-  margin: 20px;
+  margin: 0px 20px;
   flex-direction: column;
   align-content: center;
   align-items: center;
+}
+
+.warning {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.warning p,
+.warning span {
+  font-size: 20px;
+}
+
+.fa-triangle-exclamation {
+  color: #ef9a9a;
+  margin-bottom: 18px;
+  margin-right: 15px;
 }
