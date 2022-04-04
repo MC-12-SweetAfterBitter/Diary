@@ -38,6 +38,7 @@ z .diary_list_2 > .card {
 
 .fa-heart {
     color: #ef9a9a;
+    transition: transform 0.1s ease-in-out;
 }
 
 .fa-heart:hover {
