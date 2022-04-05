@@ -12,6 +12,7 @@
 @import url("gonggam_page/gonggam_main.css");
 @import url("gonggam_page/diary_list.css");
 @import url("gonggam_page/write_button.css");
+@import url("gonggam_page/modal.css");
 
 /* write page */
 @import url("write_page/writing_place.css");

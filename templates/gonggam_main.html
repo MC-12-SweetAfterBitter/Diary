@@ -32,6 +32,7 @@
     ></script>
 
     <!-- CSS -->
+    <link rel="stylesheet" href="../static/css/main_page/main.css"/>
     <link rel="stylesheet" href="../static/css/main_page/navbar.css"/>
     <link rel="stylesheet" href="../static/css/main_page/write_page/writing_place.css"/>
     <link rel="stylesheet" href="../static/css/main_page/variable.css"/>
@@ -48,12 +49,21 @@
 
     <title>My Online Diary > 공감 다이어리</title>
 
-
     <script>
         $(document).ready(function () {
             diary_list();
-
         });
+
+        function OpenModal(event) {
+            // console.log(event.target);
+            $(event.target).parents().nextAll(".modal").css('display', 'block');
+
+        }
+
+        function closeModal(event) {
+            // console.log(event.target);
+            $(event.target).parents(".modal").css('display', 'none');
+        }
 
         function Upload() {
             //html중 입력 받는 input의 id value 각 각을 변수로 만듬
@@ -85,33 +95,50 @@
                         let like = diary_list[i]['like']
                         let pubdate = diary_list[i]['pubdate']
                         // let date = diary_list[i]['date']
-                        let temp_html = `<div class="card">
-                                            <div class="card-header">
-                                              <div>
-                                                  <div>
-                                                    <label class="card-header-title" style="font-size: 20px">제목 : ${title}</label>
-                                                  </div>
-                                                  <div>
-                                                    <label style="font-size: 16px">작성자 : ${name}</label>
-                                                  </div>
+                        let temp_html = `<div class="cardsAndModal">
+                                              <!-- 일기 리스트 -->
+                                              <div class="card" onclick=OpenModal(event)>
+                                                <div class="card-header">
+                                                  <h5 class="card-header-title">제목 : ${title} <br> <label style="font-size: 16px"> 작성자 : ${name} </label></h5>
+                                                  <!--공감 버튼-->
+                                                   <button onclick=like('${name}') type="button" class="gongamBtn">
+                                                    <i class="fa-solid fa-heart fa-xl"></i>+${like}
+                                                   </button>
+                                                </div>
+                                                <div class="card-body au">
+                                                  <p class="card-text">
+                                                    ${contents}
+                                                  </p>
+                                                </div>
                                               </div>
-
-                                              <!--공감 버튼-->
-                                               <button onclick=like('${name}') type="button" class="gongamBtn">
-                                                <i class="fa-solid fa-heart fa-xl"></i>+${like}
-                                               </button>
+                                              <!-- 모달 창 -->
+                                              <div class="modal" tabindex="20">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">${title}</h5>
+                                                            <button type="button" class="btn-close" onclick=closeModal(event) data-bs-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                <i class="fa-regular fa-circle-xmark fa-lg"></i>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p>${contents}</p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <p>${name}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="card-body_Contents au">
-                                              <p class="card-text">
-                                                ${contents}
-                                              </p>
-                                            </div>
-                                          </div>`;
+                                         </div>`;
 
-                        $(".diary_list_2").append(temp_html);
+                        $(".diary_lists_2").append(temp_html);
                     }
-                }
-            })
+            }
+        }
+
+        )
         }
 
         function like(name) {
@@ -125,12 +152,6 @@
                 }
             });
         }
-
-        $(function () {
-            $(".gongamBtn").on("click", function () {
-                $(".fa-heart").toggleClass("is-active");
-            });
-        });
 
     </script>
 
@@ -309,6 +330,7 @@
         <!-- 다이어리 리스트 diary_list_2 -->
         <div class="diary_lists_2">
         </div>
+
         <div>
             <nav aria-label="Page navigation example">
               <ul class="pagination">
@@ -320,6 +342,12 @@
               </ul>
             </nav>
         </div>
+
+        <!-- 다이어리 모달 창 -->
+        <div class="modal_lists_2">
+
+        </div>
+
 
     </div>
 
@@ -336,7 +364,7 @@
 ></script>
 </body>
 <script src="../static/js/clickWritingButton.js"></script>
-<script src="../static/js/uploadDiary.js"></script>
+<!--<script src="../static/js/uploadDiary.js"></script>-->
 <!--  &lt;!&ndash;일기장쓰기 버튼 &ndash;&gt;-->
 <!--  <link rel="stylesheet" href="style/gonggam_page/write_button.css"/>-->
 <!--  <link rel="stylesheet" href="style/gonggam_page/diary_list.css"/>-->

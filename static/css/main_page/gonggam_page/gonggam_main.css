@@ -42,9 +42,10 @@
 .card {
   margin: 50px 20px 0px 20px;
   width: 755px;
+  /* height: 218px; */
   border-radius: 30px;
+  cursor: pointer;
 }
-
 .card-body_profile {
   display: flex;
   flex-direction: column;
@@ -54,14 +55,6 @@
   padding-top: 23px;
   font-size: 20px;
   height: 218px;
-}
-
-.card-body_Contents {
-  margin-right: 14px;
-  margin-left: 14px;
-  padding-top: 23px;
-  font-size: 20px;
-  height: 200px;
 }
 
 .card-body h6 {
