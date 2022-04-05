@@ -58,6 +58,8 @@
 - card, card_body 구분화에 따른 uploadDiary.js, gonggam_main.html, personal_main.html class 변경
 - card_body : 높이 및 폰트 사이즈 수정
 - 페이징 버튼 추가
+- 로그인 / 회원가입 페이지 로고 이름 변경
+- og 태그 추가
 
 #22. 4. 5. 김명진
 - 회원가입 성공 시 로그인 페이지로 바로 이동
