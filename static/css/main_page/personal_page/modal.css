@@ -1,0 +1,53 @@
+.btn-close {
+    background-color: #CBD5D4;
+    border: none;
+    border-radius: 20px;
+}
+
+.btn-close:active {
+    border: none;
+    outline: none;
+}
+
+.fa-circle-xmark {
+    color: white;
+}
+
+.btn-close:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    background-color: #CBD5D4;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+}
+
+.modal-title {
+    padding-left: 10px;
+    font-size: 30px;
+}
+/*
+.modal {
+    position: fixed;
+    height: 100%;
+}
+*/
+
+.modal {
+    /*position: relative;*/
+}
+.modal-content {
+    /*position: fixed;*/
+    width: 600px;
+    height: 700px;
+    font-size: 25px;
+    border-radius: 30px;
+}
+
+.modal-footer p {
+    margin-right: 10px;
+}

@@ -32,6 +32,7 @@
     ></script>
 
     <!-- CSS -->
+    <link rel="stylesheet" href="../static/css/main_page/main.css"/>
     <link rel="stylesheet" href="../static/css/main_page/navbar.css"/>
     <link rel="stylesheet" href="../static/css/main_page/write_page/writing_place.css"/>
     <link rel="stylesheet" href="../static/css/main_page/variable.css"/>
@@ -51,6 +52,17 @@
         $(document).ready(function () {
             diary_list();
         });
+
+        function OpenModal(event) {
+            // console.log(event.target);
+            $(event.target).parents().nextAll(".modal").css('display', 'block');
+
+        }
+
+        function closeModal(event) {
+            // console.log(event.target);
+            $(event.target).parents(".modal").css('display', 'none');
+        }
 
         function Upload() {
             //html중 입력 받는 input의 id value 각 각을 변수로 만듬
@@ -82,17 +94,40 @@
                         let contents = diary_list[i]['contents']
                         //let pubdate = diary_list[i]['pubdate']
                         let date = diary_list[i]['date']
-                        let temp_html = `<div class="card">
-                                         <div class="card-header">
-                                             <h5>${title}</h5>
-                                             <h5>${date}</h5>
-                                           </div>
-                                           <div class="card-body_Contents">
-                                             <p class="card-text">
-                                                ${contents}
-                                             </p>
-                                         </div>
-                                         </div>`;
+                        let temp_html = `<div class="cardsAndmodal">
+                                            <!-- 일기 리스트 -->
+                                             <div class="card" onclick=OpenModal(event)>
+                                                 <div class="card-header">
+                                                     <h5>${title}</h5>
+                                                     <h5>${date}</h5>
+                                                 </div>
+                                                 <div class="card-body au" style="height: 100px">
+                                                     <p class="card-text">
+                                                        ${contents}
+                                                     </p>
+                                                 </div>
+                                                 <!-- 모달 창 -->
+                                                 <div class="modal" tabindex="20">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title">${title}</h5>
+                                                                <button type="button" class="btn-close" onclick=closeModal(event) data-bs-dismiss="modal"
+                                                                        aria-label="Close">
+                                                                    <i class="fa-regular fa-circle-xmark fa-lg"></i>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p>${contents}</p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <p>${date}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                 </div>
+                                             </div>
+                                           </div>`;
 
                         $(".diary_lists_1").append(temp_html);
                     }
@@ -312,7 +347,13 @@
             </div>
         </form>
         <!-- 다이어리 리스트 diary_list_1-->
-        <div class="diary_lists_1"></div>
+        <div class="diary_lists_1">
+        </div>
+
+                <!-- 다이어리 모달 창 -->
+        <div class="modal_lists_1">
+        </div>
+
     </div>
 
     <!-- 글쓰기 버튼 -->

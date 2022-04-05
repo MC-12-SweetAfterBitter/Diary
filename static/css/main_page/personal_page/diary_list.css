@@ -15,10 +15,11 @@
   border-top-right-radius: 28px;
 }
 
-.diary_list_1 > .card {
+z .diary_list_1 .card {
   margin: 45px 30px;
 }
 
-.diary_lists_1 > .card:hover {
+.diary_lists_1 .card:hover {
+  cursor: pointer;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
