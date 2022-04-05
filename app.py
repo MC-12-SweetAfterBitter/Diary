@@ -1,5 +1,5 @@
 import math
-
+import  hashlib
 from flask import Flask, render_template, jsonify, request, session, redirect, url_for, escape
 from datetime import timedelta
 from pymongo import MongoClient
@@ -109,12 +109,15 @@ def user_infor():
         # 2차 비밀번호 체크
         elif pwcf_receive != password_receive:
             return jsonify({'ans': 'fail', 'msg': '비밀번호가 다릅니다'})
-
+    PW = hashlib.sha256(password_receive.encode()).hexdigest()
+    PW2= hashlib.sha256(pwcf_receive.encode()).hexdigest()
+    print(PW)
+    print(PW2)
     doc = {
         'name':name_receive,
         'email':email_receive,
-        'password':password_receive,
-        'pwcf':pwcf_receive
+        'password':PW,
+        'pwcf':PW2
     }
     db.users.insert_one(doc)
 
@@ -129,10 +132,13 @@ def login():
         password_receive = request.form['pw']
         print(email_receive, password_receive)
         res = db.users.find({}, {'_id': False})
+        PW = hashlib.sha256(password_receive.encode()).hexdigest()
+
+        print(PW)
 
         for i in res:
             print(i)
-            if i['email'] == email_receive and i['password'] == password_receive:
+            if i['email'] == email_receive and i['password'] == PW:
                 session.clear()
                 # 세션 할당 후
                 session['email'] = email_receive
