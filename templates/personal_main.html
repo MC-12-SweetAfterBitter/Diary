@@ -101,14 +101,15 @@
                                                      <h5>${title}</h5>
                                                      <h5>${date}</h5>
                                                  </div>
-                                                 <div class="card-body au" style="height: 100px">
-                                                     <p class="card-text">
+                                                 <div class="card-body au" style="height: 100px; width: 700px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                                                     <span class="card-text">
                                                         ${contents}
-                                                     </p>
+                                                     </span>
                                                  </div>
-                                                 <!-- 모달 창 -->
+                                             </div>
+                                             <!-- 모달 창 -->
                                                  <div class="modal" tabindex="20">
-                                                    <div class="modal-dialog">
+                                                    <div class="modal-dialog" style="max-width: 600px">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title">${title}</h5>
@@ -117,8 +118,10 @@
                                                                     <i class="fa-regular fa-circle-xmark fa-lg"></i>
                                                                 </button>
                                                             </div>
-                                                            <div class="modal-body">
-                                                                <p>${contents}</p>
+                                                            <div class="modal-body" style="word-break: break-all">
+                                                                <td>
+                                                                    <p>${contents}</p>
+                                                                </td>
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <p>${date}</p>
@@ -126,7 +129,6 @@
                                                         </div>
                                                     </div>
                                                  </div>
-                                             </div>
                                            </div>`;
 
                         $(".diary_lists_1").append(temp_html);

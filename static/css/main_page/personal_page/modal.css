@@ -30,18 +30,16 @@
     padding-left: 10px;
     font-size: 30px;
 }
-/*
-.modal {
-    position: fixed;
-    height: 100%;
-}
-*/
 
 .modal {
-    /*position: relative;*/
+    position: relative;
+    height: 100%;
 }
+/*.modal {*/
+/*    position: relative;*/
+/*}*/
 .modal-content {
-    /*position: fixed;*/
+    position: fixed;
     width: 600px;
     height: 700px;
     font-size: 25px;

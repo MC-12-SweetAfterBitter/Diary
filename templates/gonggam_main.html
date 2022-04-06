@@ -108,15 +108,15 @@
                                                     <i class="fa-solid fa-heart fa-xl"></i>+${like}
                                                    </button>
                                                 </div>
-                                                <div class="card-body au" style="height: 100px">
-                                                  <p class="card-text">
+                                                <div class="card-body au" style="height: 100px; width: 700px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                                                  <span class="card-text">
                                                     ${contents}
-                                                  </p>
+                                                  </span>
                                                 </div>
                                               </div>
                                               <!-- 모달 창 -->
                                               <div class="modal" tabindex="20">
-                                                <div class="modal-dialog">
+                                                <div class="modal-dialog" style="max-width: 600px">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title">${title}</h5>
@@ -125,8 +125,10 @@
                                                                 <i class="fa-regular fa-circle-xmark fa-lg"></i>
                                                             </button>
                                                         </div>
-                                                        <div class="modal-body">
-                                                            <p>${contents}</p>
+                                                        <div class="modal-body" style="word-break: break-all">
+                                                            <td>
+                                                                <p>${contents}</p>
+                                                            </td>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <p>${name}</p>
@@ -333,24 +335,6 @@
         <!-- 다이어리 리스트 diary_list_2 -->
         <div class="diary_lists_2">
         </div>
-
-        <div>
-            <nav aria-label="Page navigation example">
-              <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-              </ul>
-            </nav>
-        </div>
-
-        <!-- 다이어리 모달 창 -->
-        <div class="modal_lists_2">
-
-        </div>
-
 
     </div>
 
