@@ -55,9 +55,12 @@
         });
 
         function OpenModal(event) {
-            // console.log(event.target);
-            $(event.target).parents().nextAll(".modal").css('display', 'block');
-
+            // event.target이 하트 아이콘 or 버튼일 경우 모달창 display:none 설정
+            if (event.target.classList.contains("gongamBtn") || event.target.classList.contains("fa-heart")){
+                $(event.target).parents().nextAll(".modal").css('display', 'none');
+            } else {
+                $(event.target).parents().nextAll(".modal").css('display', 'block');
+            }
         }
 
         function closeModal(event) {
