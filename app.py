@@ -7,8 +7,8 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import time, flask_abort
 
-# client = MongoClient('mongodb://test:test@localhost', 27017)
-client = MongoClient('localhost', 27017)
+client = MongoClient('mongodb://test:test@localhost', 27017)
+# client = MongoClient('localhost', 27017)
 
 app = Flask(__name__)
 app.secret_key = 'secretkey_soieoefs0f39fnsjdbf'  # secret_key는 서버상에 동작하는 어플리케이션 구분하기 위해 사용하고 복잡하게 만들어야 합니다.
@@ -16,11 +16,11 @@ app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(seconds=1800) # 로그인 �
 app.config["MONGO_URI"] = "mongodb://localhost:27017/SweetAfterBitter"
 app.config['SECRET_KEY'] = 'psswrd'
 
-mongo = PyMongo(app)
+# mongo = PyMongo(app)
 
 db = client.SweetAfterBitter
-aaa = mongo.db.diary
-bbb = mongo.db.diary2
+aaa = db.diary
+bbb = db.diary2
 
 
 # 메인 홈페이지 (HTML 화면 보여주기)
@@ -105,7 +105,7 @@ def user_infor():
             return jsonify({'ans': 'fail', 'msg': '이메일 형식이 아닙니다.'})
         # 회원가입 시 중복 ID, Email 처리
         elif list['name'] == name_receive or list['email'] == email_receive:
-            return jsonify({'ans': 'fail', 'msg': '아이디 또는 이메일 중복!'})
+            return jsonify({'ans': 'fail', 'msg': '이름 또는 이메일 중복!'})
         # 2차 비밀번호 체크
         elif pwcf_receive != password_receive:
             return jsonify({'ans': 'fail', 'msg': '비밀번호가 다릅니다'})
@@ -263,4 +263,4 @@ def logout():
 ##########################################################
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=5500, debug=True)
+    app.run('0.0.0.0', port=5000, debug=True)

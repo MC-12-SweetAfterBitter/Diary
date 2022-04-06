@@ -53,12 +53,12 @@
                     url: "/signup",
                     data: {name_give:id, email_give:em, password_give:pw, pwcf_give:pwcf},
                     success: function (response) { // 성공하면
-                        if(response['ans']=='fail'){
-                            alert(response["msg"]);
-                            window.location.reload();
-                        }else{
+                        if(response['ans']=='success'){
                             alert(response["msg"]);
                             window.location.href='/login'
+                        }else{
+                            alert(response["msg"]);
+                            window.location.reload();
                         }
 
                             // location.replace("index.html")
